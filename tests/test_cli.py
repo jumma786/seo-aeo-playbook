@@ -257,6 +257,44 @@ class TestCluster:
         assert result.output.count("#") == 2
 
 
+class TestFaq:
+    GOOD_ANSWER = "SEO is the practice of optimizing a website so it ranks higher in organic search engine results pages."
+
+    def test_generates_markdown_and_schema(self, runner: CliRunner, tmp_path: Path) -> None:
+        faq_file = tmp_path / "faq.json"
+        faq_file.write_text(
+            json.dumps([{"question": "What is SEO?", "answer": self.GOOD_ANSWER}]), encoding="utf-8"
+        )
+        result = runner.invoke(cli, ["faq", str(faq_file)])
+        assert result.exit_code == 0
+        assert "## Frequently Asked Questions" in result.output
+        assert "FAQPage" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        faq_file = tmp_path / "faq.json"
+        faq_file.write_text(
+            json.dumps([{"question": "What is SEO?", "answer": self.GOOD_ANSWER}]), encoding="utf-8"
+        )
+        output_file = tmp_path / "faq.md"
+        result = runner.invoke(cli, ["faq", str(faq_file), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "FAQPage" in output_file.read_text(encoding="utf-8")
+
+    def test_validation_warnings_shown_but_not_fatal(self, runner: CliRunner, tmp_path: Path) -> None:
+        faq_file = tmp_path / "faq.json"
+        faq_file.write_text(json.dumps([{"question": "What is SEO", "answer": "Short."}]), encoding="utf-8")
+        result = runner.invoke(cli, ["faq", str(faq_file)])
+        assert result.exit_code == 0
+        assert "FAQ Validation Report" in result.output
+
+    def test_empty_list_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        faq_file = tmp_path / "faq.json"
+        faq_file.write_text("[]", encoding="utf-8")
+        result = runner.invoke(cli, ["faq", str(faq_file)])
+        assert result.exit_code != 0
+
+
 class TestContentBrief:
     def test_generates_brief_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
         spec_file = tmp_path / "spec.json"

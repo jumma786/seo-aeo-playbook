@@ -16,6 +16,10 @@ from cli.config import Config, ConfigError, load_config
 from scripts.content_brief import generate_content_brief
 from scripts.content_brief import format_brief as format_content_brief
 from scripts.entity_extractor import extract_entities, find_entity_gaps, format_report as format_entity_report
+from scripts.faq_generator import (
+    format_validation_report as format_faq_validation_report,
+)
+from scripts.faq_generator import generate_faq_markdown, generate_faq_schema_tag, items_from_dict, validate_faq_items
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
@@ -283,6 +287,29 @@ def content_brief(spec_file: str, output: str | None) -> None:
     except (KeyError, ValueError, json.JSONDecodeError) as exc:
         raise click.ClickException(str(exc)) from exc
     _emit(format_content_brief(brief), output)
+
+
+@cli.command("faq")
+@click.argument("faq_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def faq(faq_file: str, output: str | None) -> None:
+    """Generate a Markdown FAQ section and FAQPage schema from a JSON Q&A file."""
+    try:
+        with open(faq_file, encoding="utf-8") as f:
+            items = items_from_dict(json.load(f))
+    except (KeyError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+
+    issues = validate_faq_items(items)
+    if issues:
+        click.echo(format_faq_validation_report(issues), err=True)
+        click.echo(err=True)
+
+    try:
+        content = generate_faq_markdown(items) + "\n" + generate_faq_schema_tag(items)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(content, output)
 
 
 @cli.command("entities")

@@ -17,6 +17,14 @@ from scripts.entity_extractor import extract_entities, find_entity_gaps, format_
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
+from scripts.keyword_mapper import (
+    find_cannibalization,
+    format_cannibalization_report,
+    format_mapping_report,
+    map_keywords_to_urls,
+    mappings_from_dict,
+    unmapped_keywords,
+)
 from scripts.link_checker import check_links, extract_links_from_html
 from scripts.link_checker import format_report as format_link_check_report
 from scripts.page_speed import audit_url_performance
@@ -216,6 +224,43 @@ def cluster(config: Config, keywords_file: str, threshold: float | None) -> None
         click.echo(f"# {group.label}")
         for keyword in group.keywords:
             click.echo(f"  - {keyword}")
+
+
+@cli.group("keyword-map")
+def keyword_map() -> None:
+    """Map keywords to URLs and audit for cannibalization."""
+
+
+@keyword_map.command("audit")
+@click.argument("mappings_file", type=click.Path(exists=True, dir_okay=False))
+def keyword_map_audit(mappings_file: str) -> None:
+    """Audit an existing keyword-to-URL mapping for cannibalization."""
+    try:
+        with open(mappings_file, encoding="utf-8") as f:
+            mappings = mappings_from_dict(json.load(f))
+    except (KeyError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    click.echo(format_cannibalization_report(find_cannibalization(mappings)))
+
+
+@keyword_map.command("suggest")
+@click.argument("keywords_file", type=click.Path(exists=True, dir_okay=False))
+@click.argument("pages_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--threshold", type=float, default=None, help="Similarity threshold override (0.0-1.0).")
+@click.pass_obj
+def keyword_map_suggest(config: Config, keywords_file: str, pages_file: str, threshold: float | None) -> None:
+    """Suggest a target URL for each keyword from a set of existing pages."""
+    resolved_threshold = threshold if threshold is not None else config.default_similarity_threshold
+    with open(keywords_file, encoding="utf-8") as f:
+        keywords = [line.strip() for line in f if line.strip()]
+    try:
+        with open(pages_file, encoding="utf-8") as f:
+            pages = json.load(f)
+    except json.JSONDecodeError as exc:
+        raise click.ClickException(str(exc)) from exc
+
+    mappings = map_keywords_to_urls(keywords, pages, threshold=resolved_threshold)
+    click.echo(format_mapping_report(mappings, unmapped_keywords(keywords, mappings)))
 
 
 @cli.command("entities")

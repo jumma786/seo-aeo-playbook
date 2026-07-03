@@ -257,6 +257,48 @@ class TestCluster:
         assert result.output.count("#") == 2
 
 
+class TestKeywordMap:
+    def test_audit_reports_cannibalization(self, runner: CliRunner, tmp_path: Path) -> None:
+        mappings_file = tmp_path / "mappings.json"
+        mappings_file.write_text(
+            json.dumps(
+                [
+                    {"keyword": "running shoes", "url": "/running-shoes"},
+                    {"keyword": "running shoes", "url": "/best-running-shoes"},
+                ]
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["keyword-map", "audit", str(mappings_file)])
+        assert result.exit_code == 0
+        assert "1 issue(s) found" in result.output
+        assert "running shoes" in result.output
+
+    def test_audit_missing_key_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        mappings_file = tmp_path / "mappings.json"
+        mappings_file.write_text(json.dumps([{"keyword": "running shoes"}]), encoding="utf-8")
+        result = runner.invoke(cli, ["keyword-map", "audit", str(mappings_file)])
+        assert result.exit_code != 0
+
+    def test_suggest_maps_keywords_to_pages(self, runner: CliRunner, tmp_path: Path) -> None:
+        keywords_file = tmp_path / "keywords.txt"
+        keywords_file.write_text("core web vitals\n", encoding="utf-8")
+        pages_file = tmp_path / "pages.json"
+        pages_file.write_text(json.dumps({"/cwv": "Core Web Vitals Guide"}), encoding="utf-8")
+        result = runner.invoke(cli, ["keyword-map", "suggest", str(keywords_file), str(pages_file)])
+        assert result.exit_code == 0
+        assert "/cwv" in result.output
+
+    def test_suggest_reports_unmapped(self, runner: CliRunner, tmp_path: Path) -> None:
+        keywords_file = tmp_path / "keywords.txt"
+        keywords_file.write_text("totally unrelated keyword\n", encoding="utf-8")
+        pages_file = tmp_path / "pages.json"
+        pages_file.write_text(json.dumps({"/cwv": "Core Web Vitals Guide"}), encoding="utf-8")
+        result = runner.invoke(cli, ["keyword-map", "suggest", str(keywords_file), str(pages_file)])
+        assert result.exit_code == 0
+        assert "Unmapped keywords" in result.output
+
+
 class TestEntities:
     def test_extracts_entities_from_file(self, runner: CliRunner, tmp_path: Path) -> None:
         content_file = tmp_path / "content.txt"

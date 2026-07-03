@@ -211,6 +211,34 @@ class TestEntities:
         assert result.exit_code != 0
 
 
+class TestLinkSuggestions:
+    def test_suggests_links_and_flags_orphans(self, runner: CliRunner, tmp_path: Path) -> None:
+        pages_file = tmp_path / "pages.json"
+        pages_file.write_text(
+            json.dumps(
+                [
+                    {"url": "/guide", "title": "SEO Guide", "body": "See Core Web Vitals for details."},
+                    {"url": "/cwv", "title": "Core Web Vitals", "body": ""},
+                ]
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["link-suggestions", str(pages_file)])
+        assert result.exit_code == 0
+        assert "/guide -> /cwv" in result.output
+        assert "Orphan pages" in result.output
+
+    def test_missing_required_key_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        pages_file = tmp_path / "pages.json"
+        pages_file.write_text(json.dumps([{"title": "No URL here"}]), encoding="utf-8")
+        result = runner.invoke(cli, ["link-suggestions", str(pages_file)])
+        assert result.exit_code != 0
+
+    def test_missing_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["link-suggestions", "does-not-exist.json"])
+        assert result.exit_code != 0
+
+
 class TestSitemap:
     def test_writes_sitemap_file(self, runner: CliRunner, tmp_path: Path) -> None:
         urls_file = tmp_path / "urls.txt"

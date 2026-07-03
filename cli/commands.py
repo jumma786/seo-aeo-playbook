@@ -14,6 +14,8 @@ import click
 
 from cli.config import Config, ConfigError, load_config
 from scripts.entity_extractor import extract_entities, find_entity_gaps, format_report as format_entity_report
+from scripts.internal_linker import format_report as format_linking_report
+from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
 from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
 from scripts.llms_validator import audit_robots_txt
@@ -192,6 +194,21 @@ def entities(content_file: str, compare_file: str | None) -> None:
         click.echo(f"\nEntity gaps ({len(gaps)} found in {compare_file} but not {content_file}):")
         for gap in gaps:
             click.echo(f"  - {gap}")
+
+
+@cli.command("link-suggestions")
+@click.argument("pages_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--max-per-page", type=int, default=5, show_default=True)
+def link_suggestions(pages_file: str, max_per_page: int) -> None:
+    """Suggest internal links and flag orphan pages from a JSON page list."""
+    try:
+        with open(pages_file, encoding="utf-8") as f:
+            pages = pages_from_dict(json.load(f))
+    except (KeyError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+
+    suggestions = suggest_internal_links(pages, max_suggestions_per_page=max_per_page)
+    click.echo(format_linking_report(pages, suggestions))
 
 
 @cli.command("sitemap")

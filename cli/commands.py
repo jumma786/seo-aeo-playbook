@@ -19,6 +19,8 @@ from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
 from scripts.link_checker import check_links, extract_links_from_html
 from scripts.link_checker import format_report as format_link_check_report
+from scripts.page_speed import audit_url_performance
+from scripts.page_speed import format_report as format_page_speed_report
 from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
 from scripts.llms_validator import audit_robots_txt
 from scripts.llms_validator import format_report as format_crawler_report
@@ -179,6 +181,18 @@ def audit(url: str, timeout: float) -> None:
     except Exception as exc:  # noqa: BLE001 - surface any fetch failure to the CLI user
         raise click.ClickException(f"Failed to audit {url}: {exc}") from exc
     click.echo(format_report(result))
+
+
+@cli.command("page-speed")
+@click.argument("url")
+@click.option("--timeout", type=float, default=10.0, show_default=True)
+def page_speed(url: str, timeout: float) -> None:
+    """Fetch a URL and run a static page speed audit against it."""
+    try:
+        result = audit_url_performance(url, timeout=timeout)
+    except Exception as exc:  # noqa: BLE001 - surface any fetch failure to the CLI user
+        raise click.ClickException(f"Failed to audit {url}: {exc}") from exc
+    click.echo(format_page_speed_report(result))
 
 
 @cli.command("cluster")

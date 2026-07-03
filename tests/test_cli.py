@@ -215,6 +215,31 @@ class TestAudit:
         assert "connection refused" in result.output
 
 
+class TestPageSpeed:
+    def test_reports_audit_result(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
+        from scripts.page_speed import PageSpeedResult
+
+        fake_result = PageSpeedResult(url="https://example.com/")
+
+        def fake_audit(url: str, *, timeout: float = 10.0) -> PageSpeedResult:
+            assert url == "https://example.com/"
+            return fake_result
+
+        monkeypatch.setattr(commands, "audit_url_performance", fake_audit)
+        result = runner.invoke(cli, ["page-speed", "https://example.com/"])
+        assert result.exit_code == 0
+        assert "Page Speed Report" in result.output
+
+    def test_fetch_failure_reported_as_cli_error(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
+        def failing_audit(url: str, *, timeout: float = 10.0):
+            raise RuntimeError("connection refused")
+
+        monkeypatch.setattr(commands, "audit_url_performance", failing_audit)
+        result = runner.invoke(cli, ["page-speed", "https://example.com/"])
+        assert result.exit_code != 0
+        assert "connection refused" in result.output
+
+
 class TestCluster:
     def test_clusters_keywords_from_file(self, runner: CliRunner, tmp_path: Path) -> None:
         keywords_file = tmp_path / "keywords.txt"

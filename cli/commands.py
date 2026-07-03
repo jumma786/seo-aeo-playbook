@@ -17,6 +17,8 @@ from scripts.entity_extractor import extract_entities, find_entity_gaps, format_
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
+from scripts.link_checker import check_links, extract_links_from_html
+from scripts.link_checker import format_report as format_link_check_report
 from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
 from scripts.llms_validator import audit_robots_txt
 from scripts.llms_validator import format_report as format_crawler_report
@@ -237,6 +239,32 @@ def link_suggestions(pages_file: str, max_per_page: int) -> None:
 
     suggestions = suggest_internal_links(pages, max_suggestions_per_page=max_per_page)
     click.echo(format_linking_report(pages, suggestions))
+
+
+@cli.command("check-links")
+@click.argument("input_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--base-url", default="", help="Base URL for resolving relative links (HTML input only).")
+@click.option("--timeout", type=float, default=10.0, show_default=True)
+@click.pass_context
+def check_links_command(ctx: click.Context, input_file: str, base_url: str, timeout: float) -> None:
+    """Check links for broken URLs and redirects.
+
+    A .html file has its links extracted and checked; any other file is
+    treated as a plain text list of URLs, one per line. Exits non-zero if
+    any broken link is found, so this can be used as a CI gate.
+    """
+    with open(input_file, encoding="utf-8") as f:
+        content = f.read()
+
+    if input_file.lower().endswith(".html"):
+        urls = extract_links_from_html(content, base_url=base_url)
+    else:
+        urls = [line.strip() for line in content.splitlines() if line.strip()]
+
+    results = check_links(urls, timeout=timeout)
+    click.echo(format_link_check_report(results))
+    if any(result.is_broken for result in results):
+        ctx.exit(1)
 
 
 @cli.command("sitemap")

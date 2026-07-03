@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from click.testing import CliRunner
@@ -279,6 +280,44 @@ class TestLinkSuggestions:
 
     def test_missing_file_fails(self, runner: CliRunner) -> None:
         result = runner.invoke(cli, ["link-suggestions", "does-not-exist.json"])
+        assert result.exit_code != 0
+
+
+class TestCheckLinks:
+    def test_ok_links_from_text_file(self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        import requests
+
+        monkeypatch.setattr(requests, "head", lambda url, **kwargs: SimpleNamespace(status_code=200, url=url, history=[]))
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("https://example.com/a\nhttps://example.com/b\n", encoding="utf-8")
+        result = runner.invoke(cli, ["check-links", str(urls_file)])
+        assert result.exit_code == 0
+        assert "0 broken" in result.output
+
+    def test_broken_link_exits_nonzero(self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        import requests
+
+        monkeypatch.setattr(requests, "head", lambda url, **kwargs: SimpleNamespace(status_code=404, url=url, history=[]))
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("https://example.com/missing\n", encoding="utf-8")
+        result = runner.invoke(cli, ["check-links", str(urls_file)])
+        assert result.exit_code == 1
+        assert "Broken links" in result.output
+
+    def test_html_input_extracts_and_checks_links(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        import requests
+
+        monkeypatch.setattr(requests, "head", lambda url, **kwargs: SimpleNamespace(status_code=200, url=url, history=[]))
+        html_file = tmp_path / "page.html"
+        html_file.write_text('<a href="/about">About</a>', encoding="utf-8")
+        result = runner.invoke(cli, ["check-links", str(html_file), "--base-url", "https://example.com/"])
+        assert result.exit_code == 0
+        assert "1 link(s) checked" in result.output
+
+    def test_missing_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["check-links", "does-not-exist.txt"])
         assert result.exit_code != 0
 
 

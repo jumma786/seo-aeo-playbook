@@ -13,6 +13,7 @@ import logging
 import click
 
 from cli.config import Config, ConfigError, load_config
+from scripts.entity_extractor import extract_entities, find_entity_gaps, format_report as format_entity_report
 from scripts.keyword_cluster import cluster_keywords
 from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
 from scripts.llms_validator import audit_robots_txt
@@ -167,6 +168,30 @@ def cluster(config: Config, keywords_file: str, threshold: float | None) -> None
         click.echo(f"# {group.label}")
         for keyword in group.keywords:
             click.echo(f"  - {keyword}")
+
+
+@cli.command("entities")
+@click.argument("content_file", type=click.Path(exists=True, dir_okay=False))
+@click.option(
+    "--compare",
+    "compare_file",
+    type=click.Path(exists=True, dir_okay=False),
+    default=None,
+    help="A competitor text file; reports entities it mentions that content_file doesn't.",
+)
+def entities(content_file: str, compare_file: str | None) -> None:
+    """Extract entity mentions (and optionally gaps vs. a competitor file) from text."""
+    with open(content_file, encoding="utf-8") as f:
+        mentions = extract_entities(f.read())
+    click.echo(format_entity_report(mentions))
+
+    if compare_file:
+        with open(compare_file, encoding="utf-8") as f:
+            competitor_mentions = extract_entities(f.read())
+        gaps = find_entity_gaps(mentions, competitor_mentions)
+        click.echo(f"\nEntity gaps ({len(gaps)} found in {compare_file} but not {content_file}):")
+        for gap in gaps:
+            click.echo(f"  - {gap}")
 
 
 @cli.command("sitemap")

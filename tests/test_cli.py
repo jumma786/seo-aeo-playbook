@@ -187,6 +187,30 @@ class TestCluster:
         assert result.output.count("#") == 2
 
 
+class TestEntities:
+    def test_extracts_entities_from_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        content_file = tmp_path / "content.txt"
+        content_file.write_text("Jane Doe joined Example Corp as CEO in 2024.", encoding="utf-8")
+        result = runner.invoke(cli, ["entities", str(content_file)])
+        assert result.exit_code == 0
+        assert "Example Corp" in result.output
+        assert "salience" in result.output
+
+    def test_reports_gaps_against_compare_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        content_file = tmp_path / "own.txt"
+        content_file.write_text("Example Corp builds tools.", encoding="utf-8")
+        compare_file = tmp_path / "competitor.txt"
+        compare_file.write_text("TrailCo builds tools.", encoding="utf-8")
+        result = runner.invoke(cli, ["entities", str(content_file), "--compare", str(compare_file)])
+        assert result.exit_code == 0
+        assert "Entity gaps" in result.output
+        assert "TrailCo" in result.output
+
+    def test_missing_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["entities", "does-not-exist.txt"])
+        assert result.exit_code != 0
+
+
 class TestSitemap:
     def test_writes_sitemap_file(self, runner: CliRunner, tmp_path: Path) -> None:
         urls_file = tmp_path / "urls.txt"

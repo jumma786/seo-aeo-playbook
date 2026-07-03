@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import timedelta
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -343,6 +344,45 @@ class TestCheckLinks:
 
     def test_missing_file_fails(self, runner: CliRunner) -> None:
         result = runner.invoke(cli, ["check-links", "does-not-exist.txt"])
+        assert result.exit_code != 0
+
+
+class TestSiteAudit:
+    def test_audits_pages_from_file(self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        import requests
+
+        fake_response = SimpleNamespace(
+            text=(
+                '<html><head><title>A Well Optimized Page About Testing</title>'
+                '<meta name="description" content="A sufficiently long meta description that satisfies the recommended length guidance."></head>'
+                "<body><h1>Testing</h1><p>" + ("word " * 320) + "</p></body></html>"
+            ),
+            elapsed=timedelta(seconds=0.1),
+            raise_for_status=lambda: None,
+        )
+        monkeypatch.setattr(requests, "get", lambda url, **kwargs: fake_response)
+
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("https://example.com/\n", encoding="utf-8")
+        result = runner.invoke(cli, ["site-audit", str(urls_file)])
+        assert result.exit_code == 0
+        assert "Site Audit Report" in result.output
+
+    def test_fetch_failure_exits_nonzero(self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        import requests
+
+        def fail(url: str, **kwargs: object) -> None:
+            raise requests.ConnectionError("connection refused")
+
+        monkeypatch.setattr(requests, "get", fail)
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("https://example.com/down\n", encoding="utf-8")
+        result = runner.invoke(cli, ["site-audit", str(urls_file)])
+        assert result.exit_code == 1
+        assert "FAILED TO FETCH" in result.output
+
+    def test_missing_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["site-audit", "does-not-exist.txt"])
         assert result.exit_code != 0
 
 

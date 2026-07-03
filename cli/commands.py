@@ -40,6 +40,8 @@ from scripts.schema_generator import (
 from scripts.schema_validator import has_errors, validate_html, validate_schema
 from scripts.schema_validator import format_report as format_schema_validation_report
 from scripts.seo_audit import audit_url, format_report
+from scripts.site_audit import audit_site, summarize_site
+from scripts.site_audit import format_report as format_site_audit_report
 from scripts.sitemap_generator import SitemapURL, SitemapValidationError, generate_sitemap
 
 logger = logging.getLogger(__name__)
@@ -278,6 +280,27 @@ def check_links_command(ctx: click.Context, input_file: str, base_url: str, time
     results = check_links(urls, timeout=timeout)
     click.echo(format_link_check_report(results))
     if any(result.is_broken for result in results):
+        ctx.exit(1)
+
+
+@cli.command("site-audit")
+@click.argument("urls_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--timeout", type=float, default=10.0, show_default=True)
+@click.pass_context
+def site_audit(ctx: click.Context, urls_file: str, timeout: float) -> None:
+    """Audit multiple pages for SEO, schema, and performance issues.
+
+    Reads a text file of URLs (one per line) and runs the seo, schema, and
+    page-speed audits against each. Exits non-zero if any page failed to
+    fetch or has schema errors, so this can be used as a CI gate.
+    """
+    with open(urls_file, encoding="utf-8") as f:
+        urls = [line.strip() for line in f if line.strip()]
+
+    results = audit_site(urls, timeout=timeout)
+    summary = summarize_site(results)
+    click.echo(format_site_audit_report(results, summary))
+    if summary.pages_failed or summary.pages_with_schema_errors:
         ctx.exit(1)
 
 

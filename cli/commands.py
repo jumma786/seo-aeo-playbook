@@ -13,6 +13,8 @@ import logging
 import click
 
 from cli.config import Config, ConfigError, load_config
+from scripts.content_brief import generate_content_brief
+from scripts.content_brief import format_brief as format_content_brief
 from scripts.entity_extractor import extract_entities, find_entity_gaps, format_report as format_entity_report
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
@@ -261,6 +263,26 @@ def keyword_map_suggest(config: Config, keywords_file: str, pages_file: str, thr
 
     mappings = map_keywords_to_urls(keywords, pages, threshold=resolved_threshold)
     click.echo(format_mapping_report(mappings, unmapped_keywords(keywords, mappings)))
+
+
+@cli.command("content-brief")
+@click.argument("spec_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def content_brief(spec_file: str, output: str | None) -> None:
+    """Generate a content brief from a JSON spec (primary_keyword, related_keywords, ...)."""
+    try:
+        with open(spec_file, encoding="utf-8") as f:
+            spec = json.load(f)
+        brief = generate_content_brief(
+            spec["primary_keyword"],
+            spec.get("related_keywords", []),
+            target_word_count=spec.get("target_word_count", 1500),
+            questions=spec.get("questions"),
+            entities=spec.get("entities"),
+        )
+    except (KeyError, ValueError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(format_content_brief(brief), output)
 
 
 @cli.command("entities")

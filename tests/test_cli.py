@@ -257,6 +257,39 @@ class TestCluster:
         assert result.output.count("#") == 2
 
 
+class TestContentBrief:
+    def test_generates_brief_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(
+            json.dumps(
+                {
+                    "primary_keyword": "core web vitals",
+                    "related_keywords": ["largest contentful paint guide"],
+                    "target_word_count": 1000,
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["content-brief", str(spec_file)])
+        assert result.exit_code == 0
+        assert "Content Brief: core web vitals" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps({"primary_keyword": "core web vitals", "related_keywords": []}), encoding="utf-8")
+        output_file = tmp_path / "brief.md"
+        result = runner.invoke(cli, ["content-brief", str(spec_file), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "core web vitals" in output_file.read_text(encoding="utf-8")
+
+    def test_missing_primary_keyword_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps({"related_keywords": []}), encoding="utf-8")
+        result = runner.invoke(cli, ["content-brief", str(spec_file)])
+        assert result.exit_code != 0
+
+
 class TestKeywordMap:
     def test_audit_reports_cannibalization(self, runner: CliRunner, tmp_path: Path) -> None:
         mappings_file = tmp_path / "mappings.json"

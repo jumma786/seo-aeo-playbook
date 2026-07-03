@@ -148,6 +148,49 @@ class TestLlmsAuditCrawlers:
         assert "[ALLOWED]" in result.output
 
 
+class TestSchemaValidate:
+    def test_valid_json_schema_exits_zero(self, runner: CliRunner, tmp_path: Path) -> None:
+        schema_file = tmp_path / "schema.json"
+        schema_file.write_text(
+            json.dumps(
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Example Corp",
+                    "url": "https://example.com",
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["schema", "validate", str(schema_file)])
+        assert result.exit_code == 0
+        assert "OK - no issues found" in result.output
+
+    def test_invalid_json_schema_exits_nonzero(self, runner: CliRunner, tmp_path: Path) -> None:
+        schema_file = tmp_path / "schema.json"
+        schema_file.write_text(json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": "Hi"}), encoding="utf-8")
+        result = runner.invoke(cli, ["schema", "validate", str(schema_file)])
+        assert result.exit_code == 1
+        assert "[ERROR]" in result.output
+
+    def test_malformed_json_file_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        schema_file = tmp_path / "schema.json"
+        schema_file.write_text("{not valid json", encoding="utf-8")
+        result = runner.invoke(cli, ["schema", "validate", str(schema_file)])
+        assert result.exit_code != 0
+
+    def test_validates_html_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        html_file = tmp_path / "page.html"
+        html_file.write_text(
+            '<script type="application/ld+json">{"@context": "https://schema.org", '
+            '"@type": "Organization", "name": "Example Corp", "url": "https://example.com"}</script>',
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["schema", "validate", str(html_file)])
+        assert result.exit_code == 0
+        assert "OK - no issues found" in result.output
+
+
 class TestAudit:
     def test_reports_audit_result(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
         fake_result = AuditResult(url="https://example.com/", title="Example")

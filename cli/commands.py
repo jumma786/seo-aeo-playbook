@@ -33,6 +33,8 @@ from scripts.schema_generator import (
     generate_faq_schema,
     to_script_tag,
 )
+from scripts.schema_validator import has_errors, validate_html, validate_schema
+from scripts.schema_validator import format_report as format_schema_validation_report
 from scripts.seo_audit import audit_url, format_report
 from scripts.sitemap_generator import SitemapURL, SitemapValidationError, generate_sitemap
 
@@ -107,6 +109,32 @@ def schema_faq(json_file: str, output: str | None) -> None:
     except (SchemaValidationError, OSError, json.JSONDecodeError) as exc:
         raise click.ClickException(str(exc)) from exc
     _emit(to_script_tag(result), output)
+
+
+@schema.command("validate")
+@click.argument("input_file", type=click.Path(exists=True, dir_okay=False))
+@click.pass_context
+def schema_validate(ctx: click.Context, input_file: str) -> None:
+    """Validate JSON-LD markup in an HTML page or a standalone .json schema file.
+
+    Exits with a non-zero status if any error-severity issue is found, so
+    this can be used as a CI gate.
+    """
+    with open(input_file, encoding="utf-8") as f:
+        content = f.read()
+
+    if input_file.lower().endswith(".json"):
+        try:
+            schema_obj = json.loads(content)
+        except json.JSONDecodeError as exc:
+            raise click.ClickException(f"Invalid JSON in {input_file}: {exc}") from exc
+        results = [(schema_obj, validate_schema(schema_obj))]
+    else:
+        results = validate_html(content)
+
+    click.echo(format_schema_validation_report(results))
+    if any(has_errors(issues) for _, issues in results):
+        ctx.exit(1)
 
 
 @cli.group()

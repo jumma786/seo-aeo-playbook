@@ -1,0 +1,217 @@
+"""Unit tests for cli.commands (the seo-playbook CLI)."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pytest
+from click.testing import CliRunner
+
+import cli.commands as commands
+from cli.commands import cli
+from scripts.seo_audit import AuditResult
+
+
+@pytest.fixture
+def runner() -> CliRunner:
+    return CliRunner()
+
+
+class TestSchemaArticle:
+    def test_prints_script_tag_to_stdout(self, runner: CliRunner) -> None:
+        result = runner.invoke(
+            cli,
+            [
+                "schema",
+                "article",
+                "--headline",
+                "Core Web Vitals",
+                "--author",
+                "Jane Doe",
+                "--date-published",
+                "2026-01-15",
+            ],
+        )
+        assert result.exit_code == 0
+        assert "<script type=\"application/ld+json\">" in result.output
+        assert "Core Web Vitals" in result.output
+
+    def test_missing_required_option_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["schema", "article", "--headline", "Only headline"])
+        assert result.exit_code != 0
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        output_file = tmp_path / "article.html"
+        result = runner.invoke(
+            cli,
+            [
+                "schema",
+                "article",
+                "--headline",
+                "Core Web Vitals",
+                "--author",
+                "Jane Doe",
+                "--date-published",
+                "2026-01-15",
+                "--output",
+                str(output_file),
+            ],
+        )
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "Core Web Vitals" in output_file.read_text(encoding="utf-8")
+
+
+class TestSchemaFaq:
+    def test_generates_faq_schema_from_json_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        json_file = tmp_path / "faq.json"
+        json_file.write_text(json.dumps([["What is SEO?", "Search engine optimization."]]), encoding="utf-8")
+        result = runner.invoke(cli, ["schema", "faq", str(json_file)])
+        assert result.exit_code == 0
+        assert "FAQPage" in result.output
+
+    def test_missing_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["schema", "faq", "does-not-exist.json"])
+        assert result.exit_code != 0
+
+    def test_empty_pairs_fails_gracefully(self, runner: CliRunner, tmp_path: Path) -> None:
+        json_file = tmp_path / "faq.json"
+        json_file.write_text("[]", encoding="utf-8")
+        result = runner.invoke(cli, ["schema", "faq", str(json_file)])
+        assert result.exit_code != 0
+        assert "FAQPage schema requires at least one Q&A pair" in result.output
+
+
+class TestAudit:
+    def test_reports_audit_result(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
+        fake_result = AuditResult(url="https://example.com/", title="Example")
+
+        def fake_audit_url(url: str, *, timeout: float = 10.0) -> AuditResult:
+            assert url == "https://example.com/"
+            return fake_result
+
+        monkeypatch.setattr(commands, "audit_url", fake_audit_url)
+        result = runner.invoke(cli, ["audit", "https://example.com/"])
+        assert result.exit_code == 0
+        assert "SEO Audit Report" in result.output
+
+    def test_fetch_failure_reported_as_cli_error(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
+        def failing_audit_url(url: str, *, timeout: float = 10.0) -> AuditResult:
+            raise RuntimeError("connection refused")
+
+        monkeypatch.setattr(commands, "audit_url", failing_audit_url)
+        result = runner.invoke(cli, ["audit", "https://example.com/"])
+        assert result.exit_code != 0
+        assert "connection refused" in result.output
+
+
+class TestCluster:
+    def test_clusters_keywords_from_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        keywords_file = tmp_path / "keywords.txt"
+        keywords_file.write_text("best running shoes\nbest trail running shoes\n", encoding="utf-8")
+        result = runner.invoke(cli, ["cluster", str(keywords_file)])
+        assert result.exit_code == 0
+        assert "best running shoes" in result.output
+
+    def test_threshold_override_applied(self, runner: CliRunner, tmp_path: Path) -> None:
+        keywords_file = tmp_path / "keywords.txt"
+        keywords_file.write_text("apples\noranges\n", encoding="utf-8")
+        result = runner.invoke(cli, ["cluster", str(keywords_file), "--threshold", "1.0"])
+        assert result.exit_code == 0
+        assert result.output.count("#") == 2
+
+
+class TestSitemap:
+    def test_writes_sitemap_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("https://example.com/\nhttps://example.com/about\n", encoding="utf-8")
+        output_file = tmp_path / "sitemap.xml"
+        result = runner.invoke(cli, ["sitemap", str(urls_file), str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "<urlset" in output_file.read_text(encoding="utf-8")
+
+    def test_invalid_url_reported_as_cli_error(self, runner: CliRunner, tmp_path: Path) -> None:
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("not-a-url\n", encoding="utf-8")
+        output_file = tmp_path / "sitemap.xml"
+        result = runner.invoke(cli, ["sitemap", str(urls_file), str(output_file)])
+        assert result.exit_code != 0
+
+
+class TestRobots:
+    def test_writes_robots_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        output_file = tmp_path / "robots.txt"
+        result = runner.invoke(cli, ["robots", str(output_file), "--disallow", "/admin/"])
+        assert result.exit_code == 0
+        content = output_file.read_text(encoding="utf-8")
+        assert "Disallow: /admin/" in content
+
+    def test_config_domain_supplies_default_sitemap(self, runner: CliRunner, tmp_path: Path) -> None:
+        config_file = tmp_path / "seo-playbook.yml"
+        config_file.write_text("domain: example.com\n", encoding="utf-8")
+        output_file = tmp_path / "robots.txt"
+        result = runner.invoke(cli, ["--config", str(config_file), "robots", str(output_file)])
+        assert result.exit_code == 0
+        content = output_file.read_text(encoding="utf-8")
+        assert "Sitemap: https://example.com/sitemap.xml" in content
+
+    def test_explicit_sitemap_overrides_config(self, runner: CliRunner, tmp_path: Path) -> None:
+        config_file = tmp_path / "seo-playbook.yml"
+        config_file.write_text("domain: example.com\n", encoding="utf-8")
+        output_file = tmp_path / "robots.txt"
+        result = runner.invoke(
+            cli,
+            [
+                "--config",
+                str(config_file),
+                "robots",
+                str(output_file),
+                "--sitemap-url",
+                "https://other.com/sitemap.xml",
+            ],
+        )
+        assert result.exit_code == 0
+        content = output_file.read_text(encoding="utf-8")
+        assert "https://other.com/sitemap.xml" in content
+        assert "example.com" not in content
+
+
+class TestMeta:
+    def test_title_only(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["meta", "--title", "Core Web Vitals"])
+        assert result.exit_code == 0
+        assert "Core Web Vitals" in result.output
+
+    def test_title_and_description(self, runner: CliRunner) -> None:
+        result = runner.invoke(
+            cli,
+            [
+                "meta",
+                "--title",
+                "Core Web Vitals",
+                "--description",
+                "A concise summary of the page content that fits within limits here today.",
+            ],
+        )
+        assert result.exit_code == 0
+        assert "Title (" in result.output
+        assert "Description (" in result.output
+
+    def test_no_title_or_description_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["meta"])
+        assert result.exit_code != 0
+
+    def test_config_brand_applied_when_not_overridden(self, runner: CliRunner, tmp_path: Path) -> None:
+        config_file = tmp_path / "seo-playbook.yml"
+        config_file.write_text("brand: Example Corp\n", encoding="utf-8")
+        result = runner.invoke(cli, ["--config", str(config_file), "meta", "--title", "Core Web Vitals"])
+        assert result.exit_code == 0
+        assert "Example Corp" in result.output
+
+
+class TestConfigOption:
+    def test_missing_config_file_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["--config", "does-not-exist.yml", "meta", "--title", "Test"])
+        assert result.exit_code != 0

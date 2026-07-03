@@ -83,6 +83,71 @@ class TestSchemaFaq:
         assert "FAQPage schema requires at least one Q&A pair" in result.output
 
 
+class TestLlmsGenerate:
+    def test_generates_llms_txt_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(
+            json.dumps(
+                {
+                    "name": "Example Corp",
+                    "summary": "Example Corp builds SEO tools.",
+                    "sections": [
+                        {
+                            "heading": "Documentation",
+                            "links": [{"title": "Getting Started", "url": "https://example.com/docs"}],
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["llms", "generate", str(spec_file)])
+        assert result.exit_code == 0
+        assert "# Example Corp" in result.output
+        assert "## Documentation" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(
+            json.dumps(
+                {
+                    "name": "Example Corp",
+                    "summary": "Example Corp builds SEO tools.",
+                    "sections": [{"heading": "Docs", "links": [{"title": "A", "url": "https://example.com/"}]}],
+                }
+            ),
+            encoding="utf-8",
+        )
+        output_file = tmp_path / "llms.txt"
+        result = runner.invoke(cli, ["llms", "generate", str(spec_file), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "Example Corp" in output_file.read_text(encoding="utf-8")
+
+    def test_missing_required_key_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps({"summary": "No name here."}), encoding="utf-8")
+        result = runner.invoke(cli, ["llms", "generate", str(spec_file)])
+        assert result.exit_code != 0
+
+
+class TestLlmsAuditCrawlers:
+    def test_reports_blocked_crawlers(self, runner: CliRunner, tmp_path: Path) -> None:
+        robots_file = tmp_path / "robots.txt"
+        robots_file.write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
+        result = runner.invoke(cli, ["llms", "audit-crawlers", str(robots_file)])
+        assert result.exit_code == 0
+        assert "AI Crawler Accessibility Report" in result.output
+        assert "[BLOCKED]" in result.output
+
+    def test_reports_allowed_crawlers(self, runner: CliRunner, tmp_path: Path) -> None:
+        robots_file = tmp_path / "robots.txt"
+        robots_file.write_text("User-agent: *\nDisallow: /private/\n", encoding="utf-8")
+        result = runner.invoke(cli, ["llms", "audit-crawlers", str(robots_file)])
+        assert result.exit_code == 0
+        assert "[ALLOWED]" in result.output
+
+
 class TestAudit:
     def test_reports_audit_result(self, runner: CliRunner, monkeypatch: pytest.MonkeyPatch) -> None:
         fake_result = AuditResult(url="https://example.com/", title="Example")

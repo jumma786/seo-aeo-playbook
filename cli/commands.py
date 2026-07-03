@@ -14,6 +14,9 @@ import click
 
 from cli.config import Config, ConfigError, load_config
 from scripts.keyword_cluster import cluster_keywords
+from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
+from scripts.llms_validator import audit_robots_txt
+from scripts.llms_validator import format_report as format_crawler_report
 from scripts.meta_generator import (
     generate_meta_description,
     generate_title,
@@ -101,6 +104,36 @@ def schema_faq(json_file: str, output: str | None) -> None:
     except (SchemaValidationError, OSError, json.JSONDecodeError) as exc:
         raise click.ClickException(str(exc)) from exc
     _emit(to_script_tag(result), output)
+
+
+@cli.group()
+def llms() -> None:
+    """Generate and audit llms.txt / AI crawler accessibility (AEO)."""
+
+
+@llms.command("generate")
+@click.argument("spec_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def llms_generate(spec_file: str, output: str | None) -> None:
+    """Generate an llms.txt file from a JSON spec (name, summary, sections)."""
+    try:
+        with open(spec_file, encoding="utf-8") as f:
+            spec = json.load(f)
+        sections = sections_from_dict(spec.get("sections", []))
+        content = generate_llms_txt(spec["name"], spec["summary"], sections)
+    except (OSError, KeyError, LlmsTxtValidationError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(content, output)
+
+
+@llms.command("audit-crawlers")
+@click.argument("robots_file", type=click.Path(exists=True, dir_okay=False))
+def llms_audit_crawlers(robots_file: str) -> None:
+    """Audit a robots.txt file for AI crawler (GPTBot, ClaudeBot, ...) accessibility."""
+    with open(robots_file, encoding="utf-8") as f:
+        content = f.read()
+    statuses = audit_robots_txt(content)
+    click.echo(format_crawler_report(statuses))
 
 
 @cli.command("audit")

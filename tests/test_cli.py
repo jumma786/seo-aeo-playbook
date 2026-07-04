@@ -319,6 +319,43 @@ class TestFaq:
         assert result.exit_code != 0
 
 
+class TestBlogScaffold:
+    def _spec_dict(self, **overrides: object) -> dict:
+        spec = {
+            "title": "Core Web Vitals Explained: A Complete Guide",
+            "slug": "core-web-vitals-explained",
+            "author_name": "Jane Doe",
+            "date_published": "2026-01-15",
+            "primary_keyword": "core web vitals",
+            "related_keywords": ["largest contentful paint guide"],
+            "target_word_count": 1000,
+        }
+        spec.update(overrides)
+        return spec
+
+    def test_generates_scaffold_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps(self._spec_dict()), encoding="utf-8")
+        result = runner.invoke(cli, ["blog-scaffold", str(spec_file)])
+        assert result.exit_code == 0
+        assert "Core Web Vitals Explained" in result.output
+        assert "Article" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps(self._spec_dict()), encoding="utf-8")
+        output_file = tmp_path / "post.md"
+        result = runner.invoke(cli, ["blog-scaffold", str(spec_file), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+
+    def test_missing_required_key_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps({"primary_keyword": "core web vitals"}), encoding="utf-8")
+        result = runner.invoke(cli, ["blog-scaffold", str(spec_file)])
+        assert result.exit_code != 0
+
+
 class TestContentBrief:
     def test_generates_brief_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
         spec_file = tmp_path / "spec.json"

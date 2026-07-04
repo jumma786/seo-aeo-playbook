@@ -14,6 +14,7 @@ from pathlib import Path
 import click
 
 from cli.config import Config, ConfigError, load_config
+from scripts.blog_generator import BlogPostSpec, generate_blog_scaffold
 from scripts.content_brief import generate_content_brief
 from scripts.content_brief import format_brief as format_content_brief
 from scripts.entity_extractor import extract_entities, find_entity_gaps, format_report as format_entity_report
@@ -278,6 +279,33 @@ def keyword_map_suggest(config: Config, keywords_file: str, pages_file: str, thr
 
     mappings = map_keywords_to_urls(keywords, pages, threshold=resolved_threshold)
     click.echo(format_mapping_report(mappings, unmapped_keywords(keywords, mappings)))
+
+
+@cli.command("blog-scaffold")
+@click.argument("spec_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def blog_scaffold(spec_file: str, output: str | None) -> None:
+    """Scaffold a new blog post (frontmatter, outline, Article schema) from a JSON spec."""
+    try:
+        with open(spec_file, encoding="utf-8") as f:
+            raw = json.load(f)
+        brief = generate_content_brief(
+            raw["primary_keyword"],
+            raw.get("related_keywords", []),
+            target_word_count=raw.get("target_word_count", 1500),
+            questions=raw.get("questions"),
+        )
+        spec = BlogPostSpec(
+            title=raw["title"],
+            slug=raw["slug"],
+            author_name=raw["author_name"],
+            date_published=raw["date_published"],
+            brief=brief,
+        )
+        scaffold = generate_blog_scaffold(spec)
+    except (KeyError, ValueError, json.JSONDecodeError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(scaffold, output)
 
 
 @cli.command("content-brief")

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import logging
+from pathlib import Path
 
 import click
 
@@ -35,6 +36,7 @@ from scripts.keyword_mapper import (
 )
 from scripts.link_checker import check_links, extract_links_from_html
 from scripts.link_checker import format_report as format_link_check_report
+from scripts.location_page_generator import LocationPageQualityError, generate_location_pages, specs_from_dict
 from scripts.page_speed import audit_url_performance
 from scripts.page_speed import format_report as format_page_speed_report
 from scripts.llms_txt_generator import LlmsTxtValidationError, generate_llms_txt, sections_from_dict
@@ -417,6 +419,29 @@ def site_audit(ctx: click.Context, urls_file: str, timeout: float) -> None:
     click.echo(format_site_audit_report(results, summary))
     if summary.pages_failed or summary.pages_with_schema_errors:
         ctx.exit(1)
+
+
+@cli.command("location-pages")
+@click.argument("specs_file", type=click.Path(exists=True, dir_okay=False))
+@click.argument("output_dir", type=click.Path(file_okay=False))
+@click.option(
+    "--skip-quality-gates", is_flag=True, help="Render pages even if they fail quality gates (not recommended)."
+)
+def location_pages(specs_file: str, output_dir: str, skip_quality_gates: bool) -> None:
+    """Generate governed multi-location pages from a JSON spec list."""
+    try:
+        with open(specs_file, encoding="utf-8") as f:
+            specs = specs_from_dict(json.load(f))
+        pages = generate_location_pages(specs, enforce_quality_gates=not skip_quality_gates)
+    except (KeyError, json.JSONDecodeError, LocationPageQualityError) as exc:
+        raise click.ClickException(str(exc)) from exc
+
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    for slug, content in pages.items():
+        (output_path / f"{slug}.md").write_text(content, encoding="utf-8")
+
+    click.echo(f"Wrote {len(pages)} location page(s) to {output_dir}")
 
 
 @cli.command("sitemap")

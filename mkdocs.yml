@@ -1,0 +1,100 @@
+site_name: SEO / AEO / GEO Playbook
+site_description: A complete, practitioner-grade guide to SEO, AEO, and GEO, paired with a Python CLI toolkit.
+site_url: https://jumma786.github.io/seo-aeo-playbook/
+repo_url: https://github.com/jumma786/seo-aeo-playbook
+repo_name: jumma786/seo-aeo-playbook
+edit_uri: edit/main/docs/
+copyright: Content licensed under the terms in the repository <a href="https://github.com/jumma786/seo-aeo-playbook/blob/main/LICENSE">LICENSE</a>.
+
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - CLI Reference: cli-reference.md
+  - SEO Book:
+      - Overview: books/complete/seo/README.md
+      - 1. Introduction to SEO: books/complete/seo/chapter-01.md
+      - 2. How Search Engines Work: books/complete/seo/chapter-02.md
+      - 3. Crawling: books/complete/seo/chapter-03.md
+      - 4. Rendering: books/complete/seo/chapter-04.md
+      - 5. Indexing: books/complete/seo/chapter-05.md
+      - 6. Ranking: books/complete/seo/chapter-06.md
+      - 7. Search Intent: books/complete/seo/chapter-07.md
+      - 8. Keyword Research: books/complete/seo/chapter-08.md
+      - 9. Content Optimization: books/complete/seo/chapter-09.md
+      - 10. Entity SEO: books/complete/seo/chapter-10.md
+      - 11. Internal Linking: books/complete/seo/chapter-11.md
+      - 12. E-E-A-T: books/complete/seo/chapter-12.md
+      - 13. Core Web Vitals: books/complete/seo/chapter-13.md
+      - 14. Structured Data & Schema Markup: books/complete/seo/chapter-14.md
+      - 15. Mobile SEO & Mobile-First Indexing: books/complete/seo/chapter-15.md
+      - 16. International SEO & Hreflang: books/complete/seo/chapter-16.md
+      - 17. Site Architecture & URL Structure: books/complete/seo/chapter-17.md
+      - 18. Off-Page SEO & Link Building: books/complete/seo/chapter-18.md
+      - 19. Local SEO: books/complete/seo/chapter-19.md
+      - 20. SEO Analytics & Measuring Success: books/complete/seo/chapter-20.md
+  - AEO Book:
+      - Overview: books/complete/aeo/README.md
+      - 1. Introduction to AEO: books/complete/aeo/chapter-01.md
+      - 2. How AI Search Engines Work: books/complete/aeo/chapter-02.md
+      - 3. Optimizing for ChatGPT Search: books/complete/aeo/chapter-03.md
+      - 4. Optimizing for Google AI Overviews: books/complete/aeo/chapter-04.md
+      - 5. Optimizing for Perplexity: books/complete/aeo/chapter-05.md
+      - 6. Optimizing for Gemini & Claude: books/complete/aeo/chapter-06.md
+      - 7. AI Citations & Passage-Level Citability: books/complete/aeo/chapter-07.md
+      - 8. llms.txt & AI Crawler Accessibility: books/complete/aeo/chapter-08.md
+      - 9. Prompt Engineering for AEO: books/complete/aeo/chapter-09.md
+      - 10. AEO Measurement & Analytics: books/complete/aeo/chapter-10.md
+  - GEO Book:
+      - Overview: books/complete/geo/README.md
+      - 1. Introduction to GEO: books/complete/geo/chapter-01.md
+      - 2. Knowledge Graphs: books/complete/geo/chapter-02.md
+      - 3. Entities & Entity Linking: books/complete/geo/chapter-03.md
+      - 4. Semantic Search: books/complete/geo/chapter-04.md
+      - 5. Embeddings & Vector Representations: books/complete/geo/chapter-05.md
+      - 6. Vector Search & Retrieval: books/complete/geo/chapter-06.md
+      - 7. Retrieval-Augmented Generation (RAG): books/complete/geo/chapter-07.md
+      - 8. How LLMs Generate Answers & GEO Strategy: books/complete/geo/chapter-08.md

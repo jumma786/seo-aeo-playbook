@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seo-aeo-playbook"
+version = "0.1.0"
+description = "Open-source toolkit and playbook for SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jumma Mohammad", email = "jummamohammad477@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["seo", "aeo", "geo", "ai-search", "schema", "sitemap", "structured-data"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+]
+
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "click>=8.1",
+    "pyyaml>=6.0",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.4", "mypy>=1.9"]
+docs = ["mkdocs>=1.6", "mkdocs-material>=9.5", "pymdown-extensions>=10.7"]
+
+[project.urls]
+Homepage = "https://github.com/jumma786/seo-aeo-playbook"
+Repository = "https://github.com/jumma786/seo-aeo-playbook"
+Issues = "https://github.com/jumma786/seo-aeo-playbook/issues"
+
+[project.scripts]
+seo-playbook = "cli.main:cli"
+
+[tool.setuptools]
+packages = ["scripts", "cli", "api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true

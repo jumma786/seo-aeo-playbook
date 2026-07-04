@@ -21,6 +21,9 @@ from scripts.faq_generator import (
     format_validation_report as format_faq_validation_report,
 )
 from scripts.faq_generator import generate_faq_markdown, generate_faq_schema_tag, items_from_dict, validate_faq_items
+from scripts.generate_readme import DEFAULT_LICENSE_PATH
+from scripts.generate_readme import generate_readme as build_readme
+from scripts.generate_readme import related_books_from_dict
 from scripts.generate_toc import ChapterParseError, generate_toc_from_directory
 from scripts.geo_optimizer import extract_passages_from_html, score_content, split_into_passages
 from scripts.geo_optimizer import format_report as format_geo_report
@@ -469,6 +472,26 @@ def service_pages(specs_file: str, output_dir: str, skip_quality_gates: bool) ->
         (output_path / f"{slug}.md").write_text(content, encoding="utf-8")
 
     click.echo(f"Wrote {len(pages)} service-area page(s) to {output_dir}")
+
+
+@cli.command("generate-readme")
+@click.argument("spec_file", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def generate_readme(spec_file: str, output: str | None) -> None:
+    """Generate a book's README.md from a JSON spec (title, description, book_directory, ...)."""
+    try:
+        with open(spec_file, encoding="utf-8") as f:
+            spec = json.load(f)
+        readme = build_readme(
+            spec["title"],
+            spec["description"],
+            spec["book_directory"],
+            related_books=related_books_from_dict(spec.get("related_books", [])),
+            license_path=spec.get("license_path", DEFAULT_LICENSE_PATH),
+        )
+    except (KeyError, ValueError, json.JSONDecodeError, ChapterParseError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(readme, output)
 
 
 @cli.command("generate-toc")

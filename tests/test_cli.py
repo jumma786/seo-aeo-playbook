@@ -619,6 +619,53 @@ class TestServicePages:
         assert result.exit_code != 0
 
 
+class TestGenerateReadme:
+    SAMPLE_CHAPTER = (
+        "# Chapter 1: Example Chapter\n\n**Version:** 1.0\n\n---\n\n# Table of Contents\n\n1. Intro\n\n---\n\n"
+        "# 1. Intro\n\nThis chapter covers the basics of the topic. More detail follows.\n"
+    )
+
+    def test_generates_readme_from_spec(self, runner: CliRunner, tmp_path: Path) -> None:
+        book_dir = tmp_path / "book"
+        book_dir.mkdir()
+        (book_dir / "chapter-01.md").write_text(self.SAMPLE_CHAPTER, encoding="utf-8")
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(
+            json.dumps(
+                {
+                    "title": "The Example Book",
+                    "description": "A short description of the book.",
+                    "book_directory": str(book_dir),
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = runner.invoke(cli, ["generate-readme", str(spec_file)])
+        assert result.exit_code == 0
+        assert "# The Example Book" in result.output
+        assert "chapter-01.md" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        book_dir = tmp_path / "book"
+        book_dir.mkdir()
+        (book_dir / "chapter-01.md").write_text(self.SAMPLE_CHAPTER, encoding="utf-8")
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(
+            json.dumps({"title": "The Example Book", "description": "A description.", "book_directory": str(book_dir)}),
+            encoding="utf-8",
+        )
+        output_file = tmp_path / "README.md"
+        result = runner.invoke(cli, ["generate-readme", str(spec_file), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+
+    def test_missing_required_key_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        spec_file = tmp_path / "spec.json"
+        spec_file.write_text(json.dumps({"description": "A description."}), encoding="utf-8")
+        result = runner.invoke(cli, ["generate-readme", str(spec_file)])
+        assert result.exit_code != 0
+
+
 class TestGenerateToc:
     SAMPLE_CHAPTER = (
         "# Chapter 1: Example Chapter\n\n**Version:** 1.0\n\n---\n\n# Table of Contents\n\n1. Intro\n\n---\n\n"

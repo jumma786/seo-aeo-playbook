@@ -1,17 +1,17 @@
-# 🚀 SEO & AEO Playbook
+# 🚀 SEO / AEO / GEO Playbook
 
 <div align="center">
 
-![SEO](https://img.shields.io/badge/SEO-2026-blue?style=for-the-badge)
+![SEO](https://img.shields.io/badge/SEO-38%20chapters-blue?style=for-the-badge)
 ![AEO](https://img.shields.io/badge/AEO-Answer%20Engine-green?style=for-the-badge)
 ![GEO](https://img.shields.io/badge/GEO-Generative%20Engine-orange?style=for-the-badge)
 ![License](https://img.shields.io/github/license/jumma786/seo-aeo-playbook?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/jumma786/seo-aeo-playbook?style=for-the-badge)
 ![Forks](https://img.shields.io/github/forks/jumma786/seo-aeo-playbook?style=for-the-badge)
 
-### 📈 The Ultimate Open-Source SEO, AEO & AI Search Optimization Playbook
+## 📈 A Complete, Practitioner-Grade Guide to SEO, AEO & GEO — Plus a CLI + API Toolkit That Implements It
 
-*A practical guide for ranking on Google and optimizing for AI search engines like ChatGPT, Google AI Overviews, Gemini, Claude and Perplexity.*
+*From crawling fundamentals to AI-generated answers: rank on Google and get cited by ChatGPT, Google AI Overviews, Gemini, Claude, and Perplexity.*
 
 ⭐ **Star this repository if you find it useful!**
 
@@ -21,262 +21,126 @@
 
 # 📖 About
 
-Search is changing.
+Search is changing. Ranking on Google is no longer enough — content also needs to be retrievable, citable, and structured in a way AI answer engines can use.
 
-Traditional SEO is no longer enough.
+This repository is two things at once:
 
-Modern businesses must optimize for:
+1. **Three complete books** (38 chapters) covering traditional SEO, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) — the technology stack underneath AI search.
+2. **A working Python toolkit** — a CLI and a FastAPI service — that implements the practices those books describe: schema generation and validation, sitemap/robots.txt/llms.txt generation, keyword clustering and cannibalization audits, entity extraction, internal link suggestions, page-speed and full-site audits, content briefs, FAQ generation, and governed local-SEO page templates.
 
-- Google Search
-- Google AI Overviews
-- ChatGPT
-- Gemini
-- Claude
-- Perplexity
-- Bing Copilot
-
-This repository provides a complete learning path with documentation, prompts, templates, checklists, workflows, and real-world examples.
-
-Whether you're a beginner or an experienced SEO professional, this project is designed to help you build sustainable organic growth.
+Whether you're reading to learn or scripting against the CLI/API to automate your own SEO workflow, this project is built to be actually used, not just read.
 
 ---
 
-# ✨ Features
+# ✨ What's Actually Here
 
-- 📚 Complete SEO Documentation
-- 🤖 AI Search Optimization (AEO)
-- 🌍 Generative Engine Optimization (GEO)
-- 🔍 Keyword Research Framework
-- 🛠 Technical SEO Guide
-- 📝 On-Page SEO
-- 🌐 Local SEO
-- 🌎 International SEO
-- 🔗 Link Building
-- 📊 Content Strategy
-- 📦 Programmatic SEO
-- 📈 Analytics & Reporting
-- 💬 300+ AI Prompts
-- 📋 Professional Checklists
-- 📄 Ready-to-Use Templates
-- 🏢 Industry Examples
+| Component | Status | Where |
+|---|---|---|
+| **SEO Book** (20 chapters) | ✅ Complete | [`docs/books/complete/seo/`](docs/books/complete/seo/README.md) |
+| **AEO Book** (10 chapters) | ✅ Complete | [`docs/books/complete/aeo/`](docs/books/complete/aeo/README.md) |
+| **GEO Book** (8 chapters) | ✅ Complete | [`docs/books/complete/geo/`](docs/books/complete/geo/README.md) |
+| **CLI** (`seo-playbook`, 24 commands) | ✅ Complete, fully tested | [`cli/`](cli/) |
+| **Python toolkit** (24 scripts) | ✅ Complete, fully tested | [`scripts/`](scripts/) |
+| **FastAPI service** (~25 endpoints) | ✅ Complete, fully tested | [`api/`](api/) |
+| **Documentation site** (MkDocs) | ✅ Configured, builds clean | [`mkdocs.yml`](mkdocs.yml), [`docs/`](docs/) |
+| Prompt library / checklists / templates / case studies | 🚧 Scaffolded, not yet populated | `prompts/`, `checklists/`, `templates/`, `examples/` |
+
+The repository also contains a large amount of early scaffolding (empty directories and 0-byte files under the repo root and `docs/`) from initial planning that was never built out. It's harmless — nothing references it — but don't take its presence as a signal of what's actually implemented; the table above is the accurate picture.
+
+---
+
+# 🧰 Using the Toolkit
+
+Install the package and its CLI entry point:
+
+```bash
+pip install -e .
+seo-playbook --help
+```
+
+Every practice documented in the books has a corresponding command — see the [CLI Reference](docs/cli-reference.md) for the full list. A few examples:
+
+```bash
+seo-playbook init --brand "Example Corp" --domain example.com   # scaffold a project config
+seo-playbook audit https://example.com                          # on-page SEO audit
+seo-playbook schema article --headline "..." --author "..." --date-published 2026-01-15
+seo-playbook cluster keywords.txt                                # lexical keyword clustering
+seo-playbook site-audit urls.txt                                 # SEO + schema + page-speed, one pass
+```
+
+## Run the API
+
+```bash
+pip install -e ".[api]"
+uvicorn api.app:app --reload
+```
+
+Then open `http://127.0.0.1:8000/docs` for interactive Swagger UI over every endpoint. The API mirrors the CLI's capabilities; see [`api/routes.py`](api/routes.py) for the full endpoint list and its documented trust-boundary assumptions (no auth — built for local/trusted use, not a public multi-tenant service).
+
+## Run the documentation site locally
+
+```bash
+pip install -e ".[docs]"
+mkdocs serve
+```
 
 ---
 
 # 📂 Repository Structure
 
-```
+```text
 seo-aeo-playbook/
-
-├── docs/
-├── prompts/
-├── templates/
-├── checklists/
-├── examples/
-├── resources/
-├── tools/
-├── assets/
-
-README.md
-LICENSE
-CONTRIBUTING.md
-CHANGELOG.md
+├── docs/books/complete/{seo,aeo,geo}/   # the three books (38 chapters), canonical location
+├── docs/                                 # MkDocs site content (index, CLI reference, book pages)
+├── scripts/                              # 24 standalone Python modules implementing the toolkit
+├── cli/                                  # click-based CLI wiring scripts/ up as `seo-playbook`
+├── api/                                  # FastAPI service wiring scripts/ up over HTTP
+├── tests/                                # full pytest suite (400+ tests) for scripts/cli/api
+├── mkdocs.yml                            # documentation site configuration
+├── pyproject.toml                        # packaging, CLI entry point, optional dependency groups
+└── prompts/ checklists/ templates/ examples/case-studies/   # content library
 ```
 
 ---
 
-# 📚 Documentation
+# 🛣 Reading Order
 
-| Module | Status |
-|----------|--------|
-| SEO Fundamentals | 🚧 |
-| Keyword Research | 🚧 |
-| Competitor Analysis | 🚧 |
-| On-Page SEO | 🚧 |
-| Technical SEO | 🚧 |
-| Local SEO | 🚧 |
-| Link Building | 🚧 |
-| Content Marketing | 🚧 |
-| Programmatic SEO | 🚧 |
-| AEO | 🚧 |
-| AI Search | 🚧 |
-| Schema Markup | 🚧 |
-| Core Web Vitals | 🚧 |
-| SEO Tools | 🚧 |
-| Case Studies | 🚧 |
+The three books build on each other:
 
----
+1. **SEO** establishes the foundation — crawling, indexing, ranking, on-page and technical SEO.
+2. **AEO** extends that into AI answer engines — platform-specific tactics for ChatGPT, Google AI Overviews, Perplexity, Gemini, and Claude.
+3. **GEO** goes one layer deeper into the retrieval technology (knowledge graphs, embeddings, vector search, RAG) that makes every AEO tactic work mechanically.
 
-# 🤖 AI Prompt Library
-
-Professional prompts for:
-
-- Keyword Research
-- SEO Audits
-- Competitor Analysis
-- Content Gap Analysis
-- AI Search Optimization
-- Technical SEO
-- Local SEO
-- Schema Markup
-- Blog Writing
-- Landing Pages
-- Product Pages
-- FAQs
-- Link Building
-- Content Strategy
-
----
-
-# 📄 Templates
-
-Included templates:
-
-- Blog Template
-- Service Page Template
-- Product Page Template
-- Landing Page Template
-- FAQ Template
-- Pillar Page Template
-- Outreach Email Template
-- Location Page Template
-
----
-
-# ✅ SEO Checklists
-
-- Website Launch Checklist
-- Technical SEO Checklist
-- On-Page SEO Checklist
-- Local SEO Checklist
-- AEO Checklist
-- E-E-A-T Checklist
-
----
-
-# 🏢 Industry Examples
-
-Examples for:
-
-- SaaS
-- Manufacturing
-- Healthcare
-- Recycling
-- E-commerce
-- Local Business
-- Education
-- Finance
-- Real Estate
-
----
-
-# 🛣 Learning Roadmap
-
-```
-SEO Fundamentals
-        ↓
-Keyword Research
-        ↓
-Competitor Analysis
-        ↓
-Technical SEO
-        ↓
-On-Page SEO
-        ↓
-Content Marketing
-        ↓
-Link Building
-        ↓
-Local SEO
-        ↓
-Programmatic SEO
-        ↓
-AI Search (AEO)
-        ↓
-GEO
-```
+Each book cross-references the others throughout its chapters.
 
 ---
 
 # 🎯 Who Is This For?
 
-- SEO Professionals
-- Marketing Agencies
-- Freelancers
-- Developers
-- Startup Founders
-- Business Owners
-- Students
-- Bloggers
-- Content Writers
-- Digital Marketers
+SEO professionals, marketing agencies, freelancers, developers, startup founders, business owners, students, bloggers, content writers, and digital marketers — anyone who wants both the conceptual grounding and working tools for modern search visibility.
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome!
-
-If you'd like to improve this repository:
+Contributions are welcome. To propose a change:
 
 1. Fork the repository
 2. Create a feature branch
-3. Commit your changes
+3. Add tests for any new `scripts/`, `cli/`, or `api/` code (see existing modules for the established pattern)
 4. Open a Pull Request
-
-Please read `CONTRIBUTING.md` before submitting changes.
-
----
-
-# 📌 Roadmap
-
-## Version 0.1
-- [x] Repository Structure
-- [x] GitHub Setup
-- [ ] README
-- [ ] SEO Fundamentals
-
-## Version 0.2
-- [ ] Keyword Research
-- [ ] Competitor Analysis
-- [ ] Technical SEO
-
-## Version 0.3
-- [ ] AI Search Optimization
-- [ ] GEO
-- [ ] Prompt Library
-
-## Version 1.0
-- [ ] Documentation Complete
-- [ ] Templates
-- [ ] Examples
-- [ ] Checklists
-- [ ] GitHub Pages Documentation
-
----
-
-# 🌟 Support
-
-If this repository helps you:
-
-⭐ Star the repository
-
-🍴 Fork it
-
-📢 Share it with others
-
-🤝 Contribute to make it even better
 
 ---
 
 # 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-## 🚀 Learn SEO. Master AI Search. Build Organic Growth.
+## 🚀 Learn SEO. Master AI Search. Automate the Practice
 
 **Made with ❤️ by [Jumma Mohammad](https://github.com/jumma786)**
 

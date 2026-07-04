@@ -41,6 +41,51 @@ class RelatedBook:
     description: str
 
 
+def compose_readme(
+    title: str,
+    description: str,
+    toc: str,
+    *,
+    related_books: list[RelatedBook] | None = None,
+    license_path: str = DEFAULT_LICENSE_PATH,
+) -> str:
+    """Assemble README.md content from an already-rendered table of contents.
+
+    Split out from :func:`generate_readme` so callers that already have chapter
+    content in memory (e.g. an HTTP API request body) can build a TOC via
+    :func:`scripts.generate_toc.generate_toc_table` without touching the filesystem.
+
+    Args:
+        title: The book's display title, rendered as the H1 heading.
+        description: A one-paragraph description of the book.
+        toc: A pre-rendered Markdown table of contents (e.g. from
+            :func:`scripts.generate_toc.generate_toc_table`).
+        related_books: Other books to cross-link, in order. Omitted section if empty/None.
+        license_path: Relative path to the repository LICENSE file.
+
+    Returns:
+        The rendered README.md Markdown content.
+
+    Raises:
+        ValueError: If title or description is blank.
+    """
+    if not title.strip():
+        raise ValueError("title must not be empty")
+    if not description.strip():
+        raise ValueError("description must not be empty")
+
+    lines = [f"# {title.strip()}", "", description.strip(), "", "## Table of Contents", "", toc]
+
+    if related_books:
+        lines += ["", "## Related Books", ""]
+        lines += [f"- [{book.title}]({book.path}) — {book.description}" for book in related_books]
+
+    lines += ["", "## License", "", f"Content licensed under the terms in the repository [LICENSE]({license_path})."]
+
+    logger.info("Composed README for %r (%d related book(s))", title, len(related_books or []))
+    return "\n".join(lines) + "\n"
+
+
 def generate_readme(
     title: str,
     description: str,
@@ -49,7 +94,7 @@ def generate_readme(
     related_books: list[RelatedBook] | None = None,
     license_path: str = DEFAULT_LICENSE_PATH,
 ) -> str:
-    """Assemble a book's README.md content.
+    """Assemble a book's README.md content from its chapter files on disk.
 
     Args:
         title: The book's display title, rendered as the H1 heading.
@@ -66,23 +111,8 @@ def generate_readme(
         ValueError: If title or description is blank, or no chapter files are found.
         scripts.generate_toc.ChapterParseError: If a chapter file doesn't parse.
     """
-    if not title.strip():
-        raise ValueError("title must not be empty")
-    if not description.strip():
-        raise ValueError("description must not be empty")
-
     toc = generate_toc_from_directory(book_directory)
-
-    lines = [f"# {title.strip()}", "", description.strip(), "", "## Table of Contents", "", toc]
-
-    if related_books:
-        lines += ["", "## Related Books", ""]
-        lines += [f"- [{book.title}]({book.path}) — {book.description}" for book in related_books]
-
-    lines += ["", "## License", "", f"Content licensed under the terms in the repository [LICENSE]({license_path})."]
-
-    logger.info("Generated README for %r (%d related book(s))", title, len(related_books or []))
-    return "\n".join(lines) + "\n"
+    return compose_readme(title, description, toc, related_books=related_books, license_path=license_path)
 
 
 def related_books_from_dict(raw_books: list[dict[str, str]]) -> list[RelatedBook]:

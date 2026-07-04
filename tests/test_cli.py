@@ -20,6 +20,32 @@ def runner() -> CliRunner:
     return CliRunner()
 
 
+class TestInit:
+    def test_writes_config_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        result = runner.invoke(cli, ["init", str(tmp_path), "--brand", "Example Corp"])
+        assert result.exit_code == 0
+        config_file = tmp_path / "seo-playbook.yml"
+        assert config_file.exists()
+        assert "brand: Example Corp" in config_file.read_text(encoding="utf-8")
+
+    def test_refuses_to_overwrite_without_force(self, runner: CliRunner, tmp_path: Path) -> None:
+        runner.invoke(cli, ["init", str(tmp_path), "--brand", "Example Corp"])
+        result = runner.invoke(cli, ["init", str(tmp_path), "--brand", "Other Corp"])
+        assert result.exit_code != 0
+
+    def test_force_overwrites(self, runner: CliRunner, tmp_path: Path) -> None:
+        runner.invoke(cli, ["init", str(tmp_path), "--brand", "Example Corp"])
+        result = runner.invoke(cli, ["init", str(tmp_path), "--brand", "Other Corp", "--force"])
+        assert result.exit_code == 0
+        assert "Other Corp" in (tmp_path / "seo-playbook.yml").read_text(encoding="utf-8")
+
+    def test_default_directory_is_cwd(self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch.chdir(tmp_path)
+        result = runner.invoke(cli, ["init", "--brand", "Example Corp"])
+        assert result.exit_code == 0
+        assert (tmp_path / "seo-playbook.yml").exists()
+
+
 class TestSchemaArticle:
     def test_prints_script_tag_to_stdout(self, runner: CliRunner) -> None:
         result = runner.invoke(

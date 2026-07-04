@@ -28,6 +28,7 @@ from scripts.generate_readme import related_books_from_dict
 from scripts.generate_toc import ChapterParseError, generate_toc_from_directory
 from scripts.geo_optimizer import extract_passages_from_html, score_content, split_into_passages
 from scripts.geo_optimizer import format_report as format_geo_report
+from scripts.init import InitError, init_project
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
 from scripts.keyword_cluster import cluster_keywords
@@ -100,6 +101,29 @@ def cli(ctx: click.Context, config_path: str | None, verbose: bool) -> None:
         ctx.obj = load_config(config_path)
     except ConfigError as exc:
         raise click.ClickException(str(exc)) from exc
+
+
+@cli.command("init")
+@click.argument("directory", type=click.Path(file_okay=False), default=".")
+@click.option("--brand", default=None, help="Site/brand name.")
+@click.option("--domain", default=None, help="Site domain.")
+@click.option("--output-dir", default=None, help="Default output directory for generated files.")
+@click.option("--similarity-threshold", type=float, default=None, help="Default keyword clustering/mapping threshold.")
+@click.option("--force", is_flag=True, help="Overwrite an existing config file.")
+def init(directory: str, brand: str | None, domain: str | None, output_dir: str | None, similarity_threshold: float | None, force: bool) -> None:
+    """Scaffold a new project's seo-playbook.yml config file."""
+    try:
+        path = init_project(
+            directory,
+            brand=brand,
+            domain=domain,
+            output_dir=output_dir,
+            default_similarity_threshold=similarity_threshold,
+            force=force,
+        )
+    except InitError as exc:
+        raise click.ClickException(str(exc)) from exc
+    click.echo(f"Wrote starter config to {path}")
 
 
 @cli.group()

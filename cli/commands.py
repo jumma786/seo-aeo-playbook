@@ -21,6 +21,7 @@ from scripts.faq_generator import (
     format_validation_report as format_faq_validation_report,
 )
 from scripts.faq_generator import generate_faq_markdown, generate_faq_schema_tag, items_from_dict, validate_faq_items
+from scripts.generate_toc import ChapterParseError, generate_toc_from_directory
 from scripts.geo_optimizer import extract_passages_from_html, score_content, split_into_passages
 from scripts.geo_optimizer import format_report as format_geo_report
 from scripts.internal_linker import format_report as format_linking_report
@@ -468,6 +469,18 @@ def service_pages(specs_file: str, output_dir: str, skip_quality_gates: bool) ->
         (output_path / f"{slug}.md").write_text(content, encoding="utf-8")
 
     click.echo(f"Wrote {len(pages)} service-area page(s) to {output_dir}")
+
+
+@cli.command("generate-toc")
+@click.argument("book_directory", type=click.Path(exists=True, file_okay=False))
+@click.option("--output", type=click.Path(dir_okay=False), default=None, help="Write to a file instead of stdout.")
+def generate_toc(book_directory: str, output: str | None) -> None:
+    """Generate a book's README.md table of contents from its chapter-*.md files."""
+    try:
+        table = generate_toc_from_directory(book_directory)
+    except (ChapterParseError, ValueError) as exc:
+        raise click.ClickException(str(exc)) from exc
+    _emit(table, output)
 
 
 @cli.command("sitemap")

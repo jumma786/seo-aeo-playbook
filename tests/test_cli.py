@@ -619,6 +619,36 @@ class TestServicePages:
         assert result.exit_code != 0
 
 
+class TestGenerateToc:
+    SAMPLE_CHAPTER = (
+        "# Chapter 1: Example Chapter\n\n**Version:** 1.0\n\n---\n\n# Table of Contents\n\n1. Intro\n\n---\n\n"
+        "# 1. Intro\n\nThis chapter covers the basics of the topic. More detail follows.\n"
+    )
+
+    def test_generates_toc_from_directory(self, runner: CliRunner, tmp_path: Path) -> None:
+        (tmp_path / "chapter-01.md").write_text(self.SAMPLE_CHAPTER, encoding="utf-8")
+        result = runner.invoke(cli, ["generate-toc", str(tmp_path)])
+        assert result.exit_code == 0
+        assert "| # | Chapter | Focus |" in result.output
+        assert "chapter-01.md" in result.output
+
+    def test_writes_to_output_file(self, runner: CliRunner, tmp_path: Path) -> None:
+        (tmp_path / "chapter-01.md").write_text(self.SAMPLE_CHAPTER, encoding="utf-8")
+        output_file = tmp_path / "toc.md"
+        result = runner.invoke(cli, ["generate-toc", str(tmp_path), "--output", str(output_file)])
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert "chapter-01.md" in output_file.read_text(encoding="utf-8")
+
+    def test_no_chapter_files_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        result = runner.invoke(cli, ["generate-toc", str(tmp_path)])
+        assert result.exit_code != 0
+
+    def test_missing_directory_fails(self, runner: CliRunner) -> None:
+        result = runner.invoke(cli, ["generate-toc", "does-not-exist-dir"])
+        assert result.exit_code != 0
+
+
 class TestSitemap:
     def test_writes_sitemap_file(self, runner: CliRunner, tmp_path: Path) -> None:
         urls_file = tmp_path / "urls.txt"

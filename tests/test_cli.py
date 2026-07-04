@@ -572,6 +572,53 @@ class TestLocationPages:
         assert result.exit_code != 0
 
 
+class TestServicePages:
+    GOOD_CONTENT = (
+        "Our licensed plumbers serve the greater Austin area with 24/7 emergency response, transparent "
+        "flat-rate pricing, and a satisfaction guarantee backed by over a decade of local service experience. "
+        "We specialize in burst pipe repair, water heater installation, and drain cleaning for homes and "
+        "small businesses throughout the metro area, with most technicians arriving within ninety minutes."
+    )
+
+    def _spec_dict(self, slug: str, unique_content: str) -> dict:
+        return {
+            "url_slug": slug,
+            "business_name": "Example Plumbing",
+            "service_name": "Emergency Plumbing",
+            "area_served": "Austin, TX",
+            "telephone": "512-555-0100",
+            "unique_content": unique_content,
+        }
+
+    def test_generates_service_pages(self, runner: CliRunner, tmp_path: Path) -> None:
+        specs_file = tmp_path / "specs.json"
+        specs_file.write_text(json.dumps([self._spec_dict("austin-tx-plumbing", self.GOOD_CONTENT)]), encoding="utf-8")
+        output_dir = tmp_path / "out"
+        result = runner.invoke(cli, ["service-pages", str(specs_file), str(output_dir)])
+        assert result.exit_code == 0
+        content = (output_dir / "austin-tx-plumbing.md").read_text(encoding="utf-8")
+        assert "Example Plumbing" in content
+        assert "streetAddress" not in content
+
+    def test_quality_gate_failure_exits_nonzero(self, runner: CliRunner, tmp_path: Path) -> None:
+        specs_file = tmp_path / "specs.json"
+        specs_file.write_text(json.dumps([self._spec_dict("austin-tx-plumbing", "Too short.")]), encoding="utf-8")
+        output_dir = tmp_path / "out"
+        result = runner.invoke(cli, ["service-pages", str(specs_file), str(output_dir)])
+        assert result.exit_code != 0
+
+    def test_skip_quality_gates_flag_bypasses_check(self, runner: CliRunner, tmp_path: Path) -> None:
+        specs_file = tmp_path / "specs.json"
+        specs_file.write_text(json.dumps([self._spec_dict("austin-tx-plumbing", "Too short.")]), encoding="utf-8")
+        output_dir = tmp_path / "out"
+        result = runner.invoke(cli, ["service-pages", str(specs_file), str(output_dir), "--skip-quality-gates"])
+        assert result.exit_code == 0
+
+    def test_missing_file_fails(self, runner: CliRunner, tmp_path: Path) -> None:
+        result = runner.invoke(cli, ["service-pages", "does-not-exist.json", str(tmp_path / "out")])
+        assert result.exit_code != 0
+
+
 class TestSitemap:
     def test_writes_sitemap_file(self, runner: CliRunner, tmp_path: Path) -> None:
         urls_file = tmp_path / "urls.txt"

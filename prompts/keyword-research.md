@@ -4,7 +4,7 @@ Paste these into an LLM with web/search access (or pair the output with `seo-pla
 
 ## 1. Seed Expansion
 
-```
+```text
 I run a website about {{topic/industry}}, targeting {{audience}}. Generate 40-60 keyword
 ideas a real searcher in this space would use, covering:
 - Informational queries ("what is", "how to", "why")
@@ -20,7 +20,7 @@ For each keyword, tag its likely search intent (informational / commercial / tra
 
 ## 2. Question Mining
 
-```
+```text
 List the 20 most common questions people ask about {{topic}}, phrased exactly as a person
 would type or speak them (not keyword-stuffed). Group them into: Definition questions,
 Comparison questions, How-to questions, Troubleshooting questions, and "Is it worth it"
@@ -31,7 +31,7 @@ questions. These will become FAQ content and PAA targets.
 
 ## 3. Intent Classification for an Existing List
 
-```
+```text
 Here is a list of keywords: {{paste list}}. For each one, classify search intent as
 Informational, Commercial, Transactional, or Navigational, and note whether the SERP for
 that intent is typically dominated by blog content, product/category pages, tools, or
@@ -42,7 +42,7 @@ comparison pages. Flag any keyword where the phrasing is ambiguous between two i
 
 ## 4. Keyword-to-Cluster Naming
 
-```
+```text
 I clustered these keywords by lexical similarity: {{paste clusters, e.g. from
 `seo-playbook cluster keywords.txt`}}. For each cluster, suggest a clear H2-level section
 title that a single page could rank for, and flag any cluster that's actually broad enough
@@ -53,7 +53,7 @@ to deserve its own dedicated page rather than a subsection.
 
 ## 5. Competitor Keyword Gap
 
-```
+```text
 My site targets these keywords: {{list}}. A competitor at {{competitor URL}} appears to
 rank for similar topics. Based on their visible page titles, headings, and on-page content
 (not scraped rank data), what topics or subtopics do they seem to cover that I don't?

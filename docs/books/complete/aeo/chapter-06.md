@@ -57,7 +57,7 @@ For public-content AEO purposes, the Gemini App's grounded search behavior is th
 
 A site can allow standard `Googlebot` indexing (required for any Search or AI Overview visibility) while disallowing `Google-Extended` to opt out of broader Gemini/Vertex AI training use:
 
-```
+```text
 User-agent: Googlebot
 Allow: /
 
@@ -79,7 +79,7 @@ When a user or developer enables Claude's web search tool, Claude issues live se
 
 Anthropic operates `ClaudeBot` for web crawling. As with other platforms, sites should decide deliberately whether to allow it:
 
-```
+```text
 User-agent: ClaudeBot
 Allow: /
 ```

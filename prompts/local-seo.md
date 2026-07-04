@@ -4,7 +4,7 @@ For Google Business Profile, location pages, and review management. See [SEO Boo
 
 ## 1. Location Page Unique Content Draft
 
-```
+```text
 Write 150-200 words of unique, substantive content for the {{city, state}} location page
 of {{business name}}, a {{business type}}. Include at least two specific, local details
 (a landmark, a neighborhood served, how long this location has operated, a specific
@@ -16,7 +16,7 @@ Do not include the street address or phone number; those are handled separately.
 
 ## 2. GBP Description Draft
 
-```
+```text
 Write a Google Business Profile description (under 750 characters) for {{business name}},
 a {{business type}} in {{city}}. Cover what the business does, its unique differentiator,
 and primary services, in plain factual language — no keyword stuffing, no superlatives
@@ -27,7 +27,7 @@ without backing ("best in town").
 
 ## 3. Review Response Templates
 
-```
+```text
 Draft three review response templates for {{business type}}: one for a 5-star review
 mentioning {{example detail}}, one for a 3-star review citing {{example complaint}}, and
 one for a 1-star review alleging {{example serious complaint}}. Keep responses genuine and
@@ -38,7 +38,7 @@ specific to the review content, not generic "thank you for your feedback."
 
 ## 4. Citation Consistency Audit Prompt
 
-```
+```text
 Here is my NAP (Name, Address, Phone) as it should appear: {{canonical NAP}}. Here is how
 it currently appears across these listings: {{paste variations found}}. Flag every
 inconsistency, however minor (abbreviations, suite number formatting, old phone numbers).
@@ -48,7 +48,7 @@ inconsistency, however minor (abbreviations, suite number formatting, old phone 
 
 ## 5. Service-Area Messaging Check
 
-```
+```text
 My business serves {{list of cities/areas}} without a public office in most of them. Review
 this page draft: {{paste draft}}. Flag any language that implies a physical presence or
 office in an area we don't actually have one in — this is a Google guidelines violation

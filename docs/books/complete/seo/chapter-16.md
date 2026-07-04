@@ -111,7 +111,7 @@ Translation converts words; localization adapts the entire experience — curren
 
 # 11. International Site Architecture
 
-```
+```text
 example.com/            → x-default (global/EN)
 example.com/en-gb/       → English, United Kingdom
 example.com/fr-fr/       → French, France

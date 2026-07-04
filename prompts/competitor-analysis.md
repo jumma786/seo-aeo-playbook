@@ -4,7 +4,7 @@ Use with an LLM that has web access, or as a structured way to read competitor p
 
 ## 1. Page-Type Backwards Analysis
 
-```
+```text
 Here are the top 3-5 ranking pages for the query "{{target query}}": {{URLs or pasted
 content}}. For each, identify: the page type (blog post, product page, tool, comparison,
 landing page), the content structure (word count estimate, heading pattern), and what
@@ -16,7 +16,7 @@ is rewarding for this query, and does my planned page ({{describe your page}}) m
 
 ## 2. Content Gap Identification
 
-```
+```text
 Compare this competitor page: {{competitor content}} against my page: {{my content}} on
 the same topic. List: (1) subtopics they cover that I don't, (2) claims or statistics they
 cite that I don't, (3) structural elements (FAQs, tables, comparison charts) they have that
@@ -27,7 +27,7 @@ I'm missing. Don't comment on writing quality — only coverage gaps.
 
 ## 3. SERP Feature Audit
 
-```
+```text
 For the query "{{query}}", what SERP features are likely present (Featured Snippet, PAA,
 AI Overview, Image Pack, Video Carousel, Local Pack, Shopping results)? For each present
 feature, what content format tends to win it, and does my current content have a real
@@ -38,7 +38,7 @@ shot at any of them?
 
 ## 4. Backlink Profile Angle (manual research prompt)
 
-```
+```text
 I'm researching backlinks for {{competitor domain}} using {{tool name/data pasted}}. Based
 on this data, what content or asset types seem to be earning them the most links (original
 research, tools, guides, data visualizations)? Suggest 3 linkable-asset ideas for my site
@@ -49,7 +49,7 @@ in the same space that would appeal to the same linking domains.
 
 ## 5. Positioning Differentiation
 
-```
+```text
 My competitors in {{niche}} are: {{list domains}}. Based on their homepage and about-page
 messaging, what angle or promise do they all share? Suggest a differentiated positioning
 angle for my site that doesn't just copy the category consensus.

@@ -9,7 +9,7 @@
 ![Stars](https://img.shields.io/github/stars/jumma786/seo-aeo-playbook?style=for-the-badge)
 ![Forks](https://img.shields.io/github/forks/jumma786/seo-aeo-playbook?style=for-the-badge)
 
-### 📈 A Complete, Practitioner-Grade Guide to SEO, AEO & GEO — Plus a CLI + API Toolkit That Implements It
+## 📈 A Complete, Practitioner-Grade Guide to SEO, AEO & GEO — Plus a CLI + API Toolkit That Implements It
 
 *From crawling fundamentals to AI-generated answers: rank on Google and get cited by ChatGPT, Google AI Overviews, Gemini, Claude, and Perplexity.*
 
@@ -68,7 +68,7 @@ seo-playbook cluster keywords.txt                                # lexical keywo
 seo-playbook site-audit urls.txt                                 # SEO + schema + page-speed, one pass
 ```
 
-### Run the API
+## Run the API
 
 ```bash
 pip install -e ".[api]"
@@ -77,7 +77,7 @@ uvicorn api.app:app --reload
 
 Then open `http://127.0.0.1:8000/docs` for interactive Swagger UI over every endpoint. The API mirrors the CLI's capabilities; see [`api/routes.py`](api/routes.py) for the full endpoint list and its documented trust-boundary assumptions (no auth — built for local/trusted use, not a public multi-tenant service).
 
-### Run the documentation site locally
+## Run the documentation site locally
 
 ```bash
 pip install -e ".[docs]"
@@ -88,7 +88,7 @@ mkdocs serve
 
 # 📂 Repository Structure
 
-```
+```text
 seo-aeo-playbook/
 ├── docs/books/complete/{seo,aeo,geo}/   # the three books (38 chapters), canonical location
 ├── docs/                                 # MkDocs site content (index, CLI reference, book pages)
@@ -98,7 +98,7 @@ seo-aeo-playbook/
 ├── tests/                                # full pytest suite (400+ tests) for scripts/cli/api
 ├── mkdocs.yml                            # documentation site configuration
 ├── pyproject.toml                        # packaging, CLI entry point, optional dependency groups
-└── prompts/ checklists/ templates/ examples/   # scaffolded for future content, not yet populated
+└── prompts/ checklists/ templates/ examples/case-studies/   # content library
 ```
 
 ---
@@ -140,7 +140,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
 
-## 🚀 Learn SEO. Master AI Search. Automate the Practice.
+## 🚀 Learn SEO. Master AI Search. Automate the Practice
 
 **Made with ❤️ by [Jumma Mohammad](https://github.com/jumma786)**
 

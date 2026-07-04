@@ -4,7 +4,7 @@ For drafting the *content* that goes into structured data — `seo-playbook sche
 
 ## 1. FAQPage Candidate Extraction
 
-```
+```text
 Here is a page's content: {{paste content}}. Extract 4-6 genuine question/answer pairs
 suitable for FAQPage schema — the question must be something a real user would ask (not
 invented to hit a keyword), and the answer must be a complete, self-contained, 15-60 word
@@ -15,7 +15,7 @@ statement that names its subject explicitly (no "it" with no antecedent).
 
 ## 2. Article Metadata Extraction
 
-```
+```text
 Here is a draft article: {{paste draft}}. Extract: a headline (30-60 chars), the author
 name, and today's date as the publish date. If the article references an organization as
 publisher, extract that name too.
@@ -25,7 +25,7 @@ publisher, extract that name too.
 
 ## 3. Product Schema Fact-Check
 
-```
+```text
 Here is product schema I'm about to publish: {{paste JSON-LD or key fields}}. Cross-check
 against this product page content: {{paste page content}}. Flag any mismatch — price,
 availability, rating — between what the schema claims and what the visible page says.
@@ -36,7 +36,7 @@ Mismatched schema and visible content is a Google guidelines violation.
 
 ## 4. LocalBusiness Field Completeness
 
-```
+```text
 Here is what I know about this business location: {{paste available details}}. What
 LocalBusiness schema fields (name, address, telephone, openingHours, priceRange,
 geo coordinates) am I missing that I should go collect before publishing?
@@ -46,7 +46,7 @@ geo coordinates) am I missing that I should go collect before publishing?
 
 ## 5. Breadcrumb Path Draft
 
-```
+```text
 Here is my site's category structure: {{describe or paste nav}}. For a page at
 {{page URL/topic}}, what's the correct breadcrumb path from the homepage, using the
 actual category names as they appear in navigation (not invented labels)?

@@ -48,7 +48,7 @@ OpenAI operates distinct crawlers for different purposes:
 
 Blocking `GPTBot` (to opt out of training data use) does **not** block `OAI-SearchBot` — these are separate directives with separate purposes. A site that wants to be citable in ChatGPT Search but not used for training must allow `OAI-SearchBot` and `ChatGPT-User` while disallowing `GPTBot`:
 
-```
+```text
 User-agent: GPTBot
 Disallow: /
 

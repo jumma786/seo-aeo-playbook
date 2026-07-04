@@ -6,7 +6,7 @@ The `seo-playbook` command wires every `scripts/` module up as a subcommand. Ins
 seo-playbook --help
 ```
 
-```
+```text
 Usage: seo-playbook [OPTIONS] COMMAND [ARGS]...
 
   seo-playbook: SEO, AEO, and GEO automation toolkit.
@@ -26,7 +26,7 @@ Run `seo-playbook init` in a project directory to create a `seo-playbook.yml` wi
 
 Generate an `Article` schema and print it as a `<script>` tag.
 
-```
+```text
 Options:
   --headline TEXT        [required]
   --author TEXT          [required]

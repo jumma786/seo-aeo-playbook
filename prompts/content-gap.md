@@ -4,7 +4,7 @@ Finding topics and subtopics your site should cover but doesn't. For the mechani
 
 ## 1. Topic Cluster Gap Map
 
-```
+```text
 My site's content on {{broad topic}} currently covers: {{list your existing pages/titles}}.
 A comprehensive treatment of this topic typically also covers subtopics like the ones a
 pillar page in this space would need. Based on general knowledge of {{broad topic}}, list
@@ -16,7 +16,7 @@ foundational, intermediate, or advanced.
 
 ## 2. Question Gap from Real Users
 
-```
+```text
 Here are support tickets / forum posts / community questions about {{topic}}:
 {{paste real user questions}}. Which of these questions does my current content
 (listed here: {{your pages}}) NOT answer? Prioritize by how frequently the question
@@ -27,7 +27,7 @@ seems to come up.
 
 ## 3. Entity Gap Narrative
 
-```
+```text
 Here is the list of entities my content mentions: {{output of `seo-playbook entities`}}.
 Here is the list from a competitor's content on the same topic: {{their entity list}}.
 For each entity present in theirs but not mine, explain in one sentence why a
@@ -38,7 +38,7 @@ comprehensive piece on this topic would likely need to mention it.
 
 ## 4. Format Gap Check
 
-```
+```text
 My content on {{topic}} is currently: {{describe format, e.g. "a single long-form blog
 post"}}. Competing/ranking content for this topic often uses formats like comparison
 tables, calculators, checklists, or video. Which format(s) is my content missing that

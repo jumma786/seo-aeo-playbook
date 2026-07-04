@@ -4,7 +4,7 @@ For titles, meta descriptions, headings, and content structure. See the [On-Page
 
 ## 1. Title Tag Variants
 
-```
+```text
 Write 5 title tag options for a page about {{topic/product}}, targeting the keyword
 "{{primary keyword}}". Each must be 30-60 characters, include the primary keyword near
 the front, and read naturally (not keyword-stuffed). Vary the angle: one benefit-led, one
@@ -15,7 +15,7 @@ question-led, one number/list-led, one comparison-led, one direct/descriptive.
 
 ## 2. Meta Description Draft
 
-```
+```text
 Write a meta description (70-160 characters) for a page about {{topic}}, summarizing:
 {{one-sentence summary of the page's actual content}}. It should read as a genuine
 preview, not an ad — accurately represent what's on the page, include the primary keyword
@@ -26,7 +26,7 @@ naturally if it fits without forcing it.
 
 ## 3. Heading Outline
 
-```
+```text
 I'm writing a page targeting "{{primary keyword}}" for a reader who wants {{describe
 intent}}. Draft an H2/H3 heading outline (not full content) that covers the topic
 comprehensively, with each heading phrased as a specific, scannable label — not generic
@@ -37,7 +37,7 @@ section names like "Overview" or "More Information."
 
 ## 4. Thin Content Expansion
 
-```
+```text
 Here is a page that's currently {{word count}} words: {{paste content}}. It needs to reach
 comprehensive depth on "{{topic}}" without padding. Identify 3-5 genuinely missing
 subtopics or angles (not filler) that would extend it meaningfully.
@@ -47,7 +47,7 @@ subtopics or angles (not filler) that would extend it meaningfully.
 
 ## 5. Image Alt Text Batch
 
-```
+```text
 Here are image filenames/contexts from a page about {{topic}}: {{list, e.g. "hero-image:
 person using product outdoors", "chart-1: bar chart of Q3 results"}}. Write descriptive,
 specific alt text for each — describe what's actually shown, don't just repeat the target

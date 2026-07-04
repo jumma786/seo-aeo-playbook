@@ -4,7 +4,7 @@ For strengthening Experience, Expertise, Authoritativeness, and Trustworthiness 
 
 ## 1. Author Bio Draft
 
-```
+```text
 Write a 60-100 word author bio for {{name}}, whose relevant credentials/experience are:
 {{list credentials, years of experience, notable work}}. The bio should establish
 subject-matter expertise for content about {{topic}} without reading like generic
@@ -16,7 +16,7 @@ a named project) rather than vague claims like "expert in the field."
 
 ## 2. Experience-Signal Audit
 
-```
+```text
 Here is a draft of my content: {{paste draft}}. This is meant to demonstrate first-hand
 experience with {{topic/product}}, not just aggregated research. Flag any sentences that
 read as generic/researched rather than experiential, and suggest how to rewrite them to
@@ -27,7 +27,7 @@ include specific, first-hand detail (what I actually did, saw, tested, or measur
 
 ## 3. Trust Signal Gap Check
 
-```
+```text
 Here is my page: {{URL or content}}. Checking against standard trust signals — is
 authorship clear? Is a publish/update date visible? Are factual claims and statistics
 sourced? Is there a way for a reader to verify my credentials or contact the business?
@@ -38,7 +38,7 @@ List what's missing.
 
 ## 4. Citation Strengthening
 
-```
+```text
 Here is a paragraph making a factual claim: {{paste paragraph}}. Suggest what kind of
 source would strengthen this claim (a named study, an official statistic, an original
 data point I could measure myself) without inventing a citation that doesn't exist —

@@ -4,7 +4,7 @@ General prompts spanning multiple answer engines. For platform-specific prompts,
 
 ## 1. Passage Self-Containment Rewrite
 
-```
+```text
 Here is a paragraph flagged as not self-contained: {{paste paragraph, e.g. one starting
 with "It provides..."}}. Rewrite it to name its subject explicitly in the first sentence,
 so it reads as a complete, unambiguous claim if quoted alone, out of context.
@@ -14,7 +14,7 @@ so it reads as a complete, unambiguous claim if quoted alone, out of context.
 
 ## 2. Answer-First Restructure
 
-```
+```text
 Here is a section that builds up to its main point at the end: {{paste section}}. Rewrite
 it to lead with the direct answer or claim in the first sentence, then follow with
 supporting detail — without losing any of the original substance.
@@ -24,7 +24,7 @@ supporting detail — without losing any of the original substance.
 
 ## 3. llms.txt Content Curation
 
-```
+```text
 Here is my site's navigation/sitemap: {{paste structure}}. Select the 8-12 most
 important pages an AI agent should be pointed to first, grouped into logical sections
 (Documentation, Guides, Reference, Optional). For each, write a one-line description.
@@ -34,7 +34,7 @@ important pages an AI agent should be pointed to first, grouped into logical sec
 
 ## 4. Structural Label Insertion
 
-```
+```text
 Here is a section of instructional content: {{paste content}}. Add explicit structural
 labels ("Definition:", "Requirement:", "Step 1:", "Step 2:") where they'd help both human
 skimmers and extraction systems identify what type of information each part contains,
@@ -45,7 +45,7 @@ without changing the actual instructions.
 
 ## 5. AI Crawler Policy Decision Draft
 
-```
+```text
 My stance on AI training data use is {{describe: opt-in / opt-out / undecided}}, and I
 {{do/do not}} want to appear in AI-powered search results. Based on this, what should my
 robots.txt policy be for GPTBot, OAI-SearchBot, ChatGPT-User, Google-Extended, ClaudeBot,

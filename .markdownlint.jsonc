@@ -1,0 +1,17 @@
+{
+  "default": true,
+  // Prose docs, not code — long lines are expected.
+  "MD013": false,
+  // Every book chapter section is written as its own flat "# N. Title" H1,
+  // not nested H2/H3 — an intentional, established convention (see the
+  // book-writing pattern in project memory), not a mistake to flag.
+  "MD025": false,
+  // Reference sections intentionally use bare URLs (e.g. "Google Search
+  // Central: How Search Works" citations without a markdown link wrapper).
+  "MD034": false,
+  // Table pipe-spacing style is not enforced project-wide.
+  "MD060": false,
+  // README.md uses <div align="center"> for badge/tagline centering — a
+  // standard, deliberate GitHub README idiom.
+  "MD033": false
+}

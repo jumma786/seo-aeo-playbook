@@ -4,7 +4,7 @@ For digital PR, linkable-asset ideation, and outreach — see [SEO Book, Chapter
 
 ## 1. Linkable Asset Brainstorm
 
-```
+```text
 My site is in {{niche}} and targets {{audience}}. Suggest 8-10 linkable asset ideas —
 original data studies, free tools/calculators, comprehensive guides, or visual assets —
 that journalists, bloggers, or industry sites in this space would plausibly want to cite
@@ -15,7 +15,7 @@ or link to. For each, note what data or resource I'd need to produce it.
 
 ## 2. Outreach Email Draft
 
-```
+```text
 Draft a short (under 120 words) outreach email pitching {{asset/content URL}} to
 {{recipient site/publication}}, whose relevant published content is: {{their related
 article}}. The email should reference their specific piece, explain the one concrete
@@ -27,7 +27,7 @@ be useful to link to" — no generic flattery, no attachment of the whole asset 
 
 ## 3. Unlinked Mention Triage
 
-```
+```text
 Here is a list of pages that mention my brand/product without linking: {{paste list with
 context snippets}}. For each, draft a one-line reason a polite "could you link this
 mention" request would be reasonable (vs. one where it would look presumptuous).
@@ -37,7 +37,7 @@ mention" request would be reasonable (vs. one where it would look presumptuous).
 
 ## 4. Anchor Text Distribution Review
 
-```
+```text
 Here is my current backlink anchor text distribution: {{paste anchor text : count pairs}}.
 Is this distribution natural (varied, mostly branded/generic) or does it look manipulative
 (over-concentrated on exact-match commercial keywords)? What's the risk level?
@@ -47,7 +47,7 @@ Is this distribution natural (varied, mostly branded/generic) or does it look ma
 
 ## 5. Disavow Candidate Review
 
-```
+```text
 Here is a list of backlinks flagged as potentially toxic: {{paste list with domain/context}}.
 For each, assess: does this look like clear spam/PBN, or just a low-quality-but-legitimate
 site? Only recommend disavow for links with real evidence of harm, not just low DA.

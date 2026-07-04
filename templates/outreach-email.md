@@ -8,7 +8,7 @@ Copy-paste starting points for link-building and digital PR outreach. See [SEO B
 
 ## 1. Linkable Asset Pitch
 
-```
+```text
 Subject: [Specific detail from their article] + a resource that might help
 
 Hi [Name],
@@ -34,7 +34,7 @@ Thanks for the great work on [publication/site name].
 
 ## 2. Unlinked Mention Follow-Up
 
-```
+```text
 Subject: Thanks for the mention in [article title]
 
 Hi [Name],
@@ -55,7 +55,7 @@ Thanks again,
 
 ## 3. Broken Link Replacement
 
-```
+```text
 Subject: Found a broken link on [page title]
 
 Hi [Name],
@@ -75,7 +75,7 @@ here: [your URL]. No worries either way, just wanted to flag the broken link.
 
 ## 4. Guest Content Pitch
 
-```
+```text
 Subject: Guest post idea for [publication name]: [proposed title]
 
 Hi [Name],

@@ -41,6 +41,7 @@ Synthesized from the per-chapter checklists across the [AEO Book](../docs/books/
 ## References
 
 All 10 chapters of the [AEO Book](../docs/books/complete/aeo/README.md), especially:
+
 - [Chapter 7: AI Citations & Passage-Level Citability](../docs/books/complete/aeo/chapter-07.md)
 - [Chapter 8: llms.txt & AI Crawler Accessibility](../docs/books/complete/aeo/chapter-08.md)
 - [Chapter 10: AEO Measurement & Analytics](../docs/books/complete/aeo/chapter-10.md)

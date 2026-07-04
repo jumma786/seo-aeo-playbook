@@ -38,7 +38,7 @@ Every Perplexity answer displays numbered citation markers inline within the gen
 
 Perplexity operates its own crawler, `PerplexityBot`, which must be explicitly allowed in `robots.txt` for a site to be eligible as a live citation source:
 
-```
+```text
 User-agent: PerplexityBot
 Allow: /
 ```

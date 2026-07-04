@@ -172,13 +172,13 @@ Entities are the real-world people, places, organizations, and concepts a search
 
 # 19. Semantic Search
 
-Semantic search matches meaning rather than exact keyword phrasing — understanding that "affordable running shoes" and "cheap trainers" describe the same intent. This is the mechanism underneath modern ranking and AI retrieval; the [GEO Book](../../geo/README.md) covers the technology stack (embeddings, vector search) in depth.
+Semantic search matches meaning rather than exact keyword phrasing — understanding that "affordable running shoes" and "cheap trainers" describe the same intent. This is the mechanism underneath modern ranking and AI retrieval; the [GEO Book](../geo/README.md) covers the technology stack (embeddings, vector search) in depth.
 
 ---
 
 # 20. AI Search
 
-AI search systems — AI Overviews, ChatGPT Search, Perplexity, Gemini, Claude — retrieve and synthesize answers directly, often citing sources rather than just linking to them. This changes what "ranking" means: being cited inside a generated answer is now as important as ranking a blue link. The [AEO Book](../../aeo/README.md) covers this in full.
+AI search systems — AI Overviews, ChatGPT Search, Perplexity, Gemini, Claude — retrieve and synthesize answers directly, often citing sources rather than just linking to them. This changes what "ranking" means: being cited inside a generated answer is now as important as ranking a blue link. The [AEO Book](../aeo/README.md) covers this in full.
 
 ---
 
@@ -190,13 +190,13 @@ AI Overviews place an AI-generated summary above traditional results for many qu
 
 # 22. Answer Engine Optimization (AEO)
 
-AEO is the practice of structuring content so answer engines can retrieve, understand, and cite it — covering platform-specific tactics for ChatGPT Search, AI Overviews, Perplexity, Gemini, and Claude. See the [AEO Book](../../aeo/README.md) in full.
+AEO is the practice of structuring content so answer engines can retrieve, understand, and cite it — covering platform-specific tactics for ChatGPT Search, AI Overviews, Perplexity, Gemini, and Claude. See the [AEO Book](../aeo/README.md) in full.
 
 ---
 
 # 23. Generative Engine Optimization (GEO)
 
-GEO goes one layer deeper than AEO, into the retrieval technology itself — knowledge graphs, entity linking, embeddings, vector search, and retrieval-augmented generation (RAG) — that makes every AEO tactic work mechanically. See the [GEO Book](../../geo/README.md) in full.
+GEO goes one layer deeper than AEO, into the retrieval technology itself — knowledge graphs, entity linking, embeddings, vector search, and retrieval-augmented generation (RAG) — that makes every AEO tactic work mechanically. See the [GEO Book](../geo/README.md) in full.
 
 ---
 
@@ -224,7 +224,7 @@ GEO goes one layer deeper than AEO, into the retrieval technology itself — kno
 
 # 26. SEO Roadmap
 
-This book is organized to build knowledge in order: Chapters 2-6 cover the technical pipeline (how search engines work, crawling, rendering, indexing, ranking); Chapters 7-13 cover on-page and content fundamentals (search intent, keyword research, content optimization, entity SEO, internal linking, E-E-A-T, Core Web Vitals); Chapters 14-18 cover structured data, mobile, international, architecture, and off-page SEO; Chapters 19-20 cover local SEO and measurement. The [AEO Book](../../aeo/README.md) and [GEO Book](../../geo/README.md) then extend this foundation into AI-powered search.
+This book is organized to build knowledge in order: Chapters 2-6 cover the technical pipeline (how search engines work, crawling, rendering, indexing, ranking); Chapters 7-13 cover on-page and content fundamentals (search intent, keyword research, content optimization, entity SEO, internal linking, E-E-A-T, Core Web Vitals); Chapters 14-18 cover structured data, mobile, international, architecture, and off-page SEO; Chapters 19-20 cover local SEO and measurement. The [AEO Book](../aeo/README.md) and [GEO Book](../geo/README.md) then extend this foundation into AI-powered search.
 
 ---
 

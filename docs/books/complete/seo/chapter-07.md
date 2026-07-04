@@ -163,7 +163,7 @@ The People Also Ask box surfaces related questions largely tied to informational
 
 # 17. AI Search Intent
 
-AI answer engines (ChatGPT Search, AI Overviews, Perplexity) tend to synthesize answers most readily for informational and commercial-investigation intent, where a direct, well-supported answer can be generated — transactional intent still tends to route to the actual product/service page or checkout flow rather than being synthesized. See the [AEO Book](../../aeo/README.md) for platform-specific detail.
+AI answer engines (ChatGPT Search, AI Overviews, Perplexity) tend to synthesize answers most readily for informational and commercial-investigation intent, where a direct, well-supported answer can be generated — transactional intent still tends to route to the actual product/service page or checkout flow rather than being synthesized. See the [AEO Book](../aeo/README.md) for platform-specific detail.
 
 ---
 

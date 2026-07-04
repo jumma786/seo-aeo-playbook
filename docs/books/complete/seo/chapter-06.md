@@ -178,7 +178,7 @@ Search engines increasingly rank based on entities (specific, disambiguated real
 
 # 22. AI Ranking Signals
 
-AI-powered ranking components (Google's use of large language models within its ranking systems, and AI Overviews' own separate retrieval-and-synthesis layer) increasingly weigh semantic relevance and passage-level citability alongside traditional signals. See the [AEO Book](../../aeo/README.md) and [GEO Book](../../geo/README.md) for how retrieval and generation work mechanically.
+AI-powered ranking components (Google's use of large language models within its ranking systems, and AI Overviews' own separate retrieval-and-synthesis layer) increasingly weigh semantic relevance and passage-level citability alongside traditional signals. See the [AEO Book](../aeo/README.md) and [GEO Book](../geo/README.md) for how retrieval and generation work mechanically.
 
 ---
 

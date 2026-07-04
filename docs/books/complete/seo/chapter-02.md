@@ -70,7 +70,7 @@ A search engine is a software system that discovers, stores, organizes, and retr
 | Gemini | AI-native | Deep integration with Google's Knowledge Graph and Search index |
 | Claude | AI-native | Uses web search as a tool rather than a dedicated search product |
 
-The [AEO Book](../../aeo/README.md) covers the AI-native engines individually in depth.
+The [AEO Book](../aeo/README.md) covers the AI-native engines individually in depth.
 
 ---
 

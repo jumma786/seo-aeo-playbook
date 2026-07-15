@@ -13,5 +13,9 @@
   "MD060": false,
   // README.md uses <div align="center"> for badge/tagline centering — a
   // standard, deliberate GitHub README idiom.
-  "MD033": false
+  "MD033": false,
+  // Consequence of MD033 above: README.md opens with the centering <div>
+  // that wraps its H1, so the literal first line is HTML rather than a
+  // heading. The H1 is still the first rendered element.
+  "MD041": false
 }

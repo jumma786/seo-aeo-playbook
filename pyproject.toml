@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "seo-aeo-playbook"
-version = "0.1.0"
+version = "1.0.0"
 description = "Open-source toolkit and playbook for SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)"
 readme = "README.md"
 license = { text = "MIT" }

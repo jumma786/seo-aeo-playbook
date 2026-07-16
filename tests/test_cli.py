@@ -283,30 +283,6 @@ class TestCluster:
         assert result.output.count("#") == 2
 
 
-class TestGeoScore:
-    def test_scores_markdown_content(self, runner: CliRunner, tmp_path: Path) -> None:
-        content_file = tmp_path / "content.md"
-        content_file.write_text(
-            "Core Web Vitals is a set of three metrics — LCP, INP, and CLS — introduced by Google in 2020 "
-            "to measure loading speed, responsiveness, and visual stability.",
-            encoding="utf-8",
-        )
-        result = runner.invoke(cli, ["geo-score", str(content_file)])
-        assert result.exit_code == 0
-        assert "GEO Citability Report" in result.output
-
-    def test_scores_html_content(self, runner: CliRunner, tmp_path: Path) -> None:
-        content_file = tmp_path / "page.html"
-        content_file.write_text("<html><body><p>A short paragraph.</p></body></html>", encoding="utf-8")
-        result = runner.invoke(cli, ["geo-score", str(content_file)])
-        assert result.exit_code == 0
-        assert "1 passage(s)" in result.output
-
-    def test_missing_file_fails(self, runner: CliRunner) -> None:
-        result = runner.invoke(cli, ["geo-score", "does-not-exist.md"])
-        assert result.exit_code != 0
-
-
 class TestFaq:
     GOOD_ANSWER = "SEO is the practice of optimizing a website so it ranks higher in organic search engine results pages."
 

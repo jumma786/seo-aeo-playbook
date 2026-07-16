@@ -45,7 +45,7 @@ Audit a live page in one command:
 seo-playbook audit https://example.com
 ```
 
-A few more of the 22 commands:
+A few more of the 21 commands:
 
 ```bash
 # Scaffold a project config that other commands read defaults from
@@ -58,14 +58,11 @@ seo-playbook schema article --headline "..." --author "..." --date-published 202
 seo-playbook cluster keywords.txt
 seo-playbook keyword-map audit mapping.json
 
-# Score passages for AI-citation readiness (GEO Ch. 7 methodology)
-seo-playbook geo-score content.md
-
 # SEO + schema + performance across many URLs, one fetch per page
 seo-playbook site-audit urls.txt
 ```
 
-See the [CLI reference](docs/cli-reference.md) for all 22 commands and their options.
+See the [CLI reference](docs/cli-reference.md) for all 21 commands and their options.
 
 ## What's inside
 
@@ -74,7 +71,7 @@ See the [CLI reference](docs/cli-reference.md) for all 22 commands and their opt
 | **SEO Book** — 20 chapters | Complete | [`docs/books/complete/seo/`](docs/books/complete/seo/README.md) |
 | **AEO Book** — 10 chapters | Complete | [`docs/books/complete/aeo/`](docs/books/complete/aeo/README.md) |
 | **GEO Book** — 8 chapters | Complete | [`docs/books/complete/geo/`](docs/books/complete/geo/README.md) |
-| **CLI** — 22 commands | Complete, tested | [`cli/`](cli/) |
+| **CLI** — 21 commands | Complete, tested | [`cli/`](cli/) |
 | **Toolkit** — 24 modules | Complete, tested | [`scripts/`](scripts/) |
 | **HTTP API** — 25 endpoints | Complete, tested | [`api/`](api/) |
 | **Documentation site** — MkDocs | [Live](https://jumma786.github.io/seo-aeo-playbook/) | [`mkdocs.yml`](mkdocs.yml) |

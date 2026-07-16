@@ -25,7 +25,7 @@ Ridgeline Fabrication is a mid-size contract manufacturer producing custom sheet
 
 ## Applying the AEO/GEO Books
 
-B2B buyers frequently start research in ChatGPT or Perplexity with comparison queries ("what's the difference between CNC machining and sheet metal fabrication for low-volume parts"). Following [AEO Book, Chapter 7](../../docs/books/complete/aeo/chapter-07.md), each cluster page was restructured to lead with a direct, self-contained answer to its core question before supporting detail, and `seo-playbook geo-score` was used to catch passages still opening with a dangling pronoun instead of naming the process explicitly.
+B2B buyers frequently start research in ChatGPT or Perplexity with comparison queries ("what's the difference between CNC machining and sheet metal fabrication for low-volume parts"). Following [AEO Book, Chapter 7](../../docs/books/complete/aeo/chapter-07.md), each cluster page was restructured to lead with a direct, self-contained answer to its core question before supporting detail, naming the process explicitly rather than opening with a dangling pronoun.
 
 An `llms.txt` file was published (`seo-playbook llms generate`) curating links to the pillar page and each capability cluster page, and `seo-playbook llms audit-crawlers` confirmed no AI crawler was being unintentionally blocked by an overly broad legacy `robots.txt` rule.
 
@@ -35,4 +35,4 @@ In a scenario like this, the expected qualitative impact is: technical buyers fi
 
 ## Tools referenced in this case study
 
-`seo-playbook cluster`, `content-brief`, `schema article|faq`, `schema validate`, `sitemap`, `robots`, `site-audit`, `geo-score`, `llms generate`, `llms audit-crawlers` — see the [CLI Reference](../../docs/cli-reference.md).
+`seo-playbook cluster`, `content-brief`, `schema article|faq`, `schema validate`, `sitemap`, `robots`, `site-audit`, `llms generate`, `llms audit-crawlers` — see the [CLI Reference](../../docs/cli-reference.md).

@@ -1,6 +1,6 @@
 # AEO (Answer Engine Optimization) Prompts
 
-General prompts spanning multiple answer engines. For platform-specific prompts, see [AI Overviews Prompts](ai-overviews.md). For the mechanical citability check, use `seo-playbook geo-score`. See the [AEO Checklist](../checklists/aeo.md) and the [AEO Book](../docs/books/complete/aeo/README.md).
+General prompts spanning multiple answer engines. For platform-specific prompts, see [AI Overviews Prompts](ai-overviews.md). See the [AEO Checklist](../checklists/aeo.md) and the [AEO Book](../docs/books/complete/aeo/README.md).
 
 ## 1. Passage Self-Containment Rewrite
 
@@ -10,7 +10,7 @@ with "It provides..."}}. Rewrite it to name its subject explicitly in the first 
 so it reads as a complete, unambiguous claim if quoted alone, out of context.
 ```
 
-**When to use:** Fixing passages `seo-playbook geo-score` flags for a dangling pronoun opener.
+**When to use:** Fixing a passage that opens with "It"/"This"/"They" referring to a subject named somewhere else, so it can't stand alone if quoted.
 
 ## 2. Answer-First Restructure
 
@@ -41,7 +41,7 @@ skimmers and extraction systems identify what type of information each part cont
 without changing the actual instructions.
 ```
 
-**When to use:** Improving the "structural label" signal `seo-playbook geo-score` checks for.
+**When to use:** Making instructional content's structure explicit, so an extraction system can tell a definition from a step from a caveat.
 
 ## 5. AI Crawler Policy Decision Draft
 

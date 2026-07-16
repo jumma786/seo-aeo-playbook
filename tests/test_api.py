@@ -210,17 +210,6 @@ class TestEntitiesAndLinking:
         assert len(response.json()["suggestions"]) == 1
 
 
-class TestGeoScore:
-    def test_geo_score(self) -> None:
-        text = (
-            "Core Web Vitals is a set of three metrics introduced by Google in 2020 to measure "
-            "loading speed, responsiveness, and visual stability across the web."
-        )
-        response = client.post("/geo/score", json={"text": text})
-        assert response.status_code == 200
-        assert len(response.json()["passages"]) == 1
-
-
 class TestContentEndpoints:
     def test_meta_title_and_description(self) -> None:
         response = client.post("/meta", json={"title": "Core Web Vitals", "brand": "Example Corp"})

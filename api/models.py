@@ -308,30 +308,6 @@ class LinkSuggestResponse(BaseModel):
 
 
 # --------------------------------------------------------------------------
-# GEO
-# --------------------------------------------------------------------------
-
-
-class GeoScoreRequest(BaseModel):
-    text: str
-
-
-class PassageScoreModel(BaseModel):
-    text: str
-    word_count: int
-    self_contained: bool
-    has_specific_fact: bool
-    has_structural_label: bool
-    score: float
-    issues: list[str]
-
-
-class GeoScoreResponse(BaseModel):
-    passages: list[PassageScoreModel]
-    average_score: float
-
-
-# --------------------------------------------------------------------------
 # Content generation
 # --------------------------------------------------------------------------
 

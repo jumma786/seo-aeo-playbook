@@ -19,7 +19,7 @@ from api.routes import router
 app = FastAPI(
     title="seo-aeo-playbook API",
     description="HTTP interface over the seo-aeo-playbook scripts/ toolkit — SEO, AEO, and GEO automation.",
-    version="0.1.0",
+    version="1.0.0",
 )
 
 app.include_router(router)

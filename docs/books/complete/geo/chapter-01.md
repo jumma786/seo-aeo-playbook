@@ -132,6 +132,8 @@ After completing this chapter, you will understand:
 
 # References
 
+- Aggarwal et al., ["GEO: Generative Engine Optimization"](https://arxiv.org/abs/2311.09735) (KDD 2024) — the paper that introduced the term and benchmarked optimization strategies against generative engines
+- Lewis et al., ["Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"](https://arxiv.org/abs/2005.11401) — the RAG architecture underlying generative search
 - This book's companion volumes: the [SEO Book](../seo/README.md) and [AEO Book](../aeo/README.md)
 
 ---

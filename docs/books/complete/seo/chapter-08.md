@@ -232,8 +232,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Keyword Planner Documentation
-- Google Search Central: Keyword Research Fundamentals
+- Google Ads Help: [Use Keyword Planner](https://support.google.com/google-ads/answer/7337243)
+- Google Search Central: [Get started with Google Trends](https://developers.google.com/search/docs/monitor-debug/trends-start)
 
 ---
 

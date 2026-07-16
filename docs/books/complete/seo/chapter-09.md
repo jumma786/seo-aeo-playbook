@@ -240,8 +240,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Helpful Content Guidelines
-- Google Search Quality Rater Guidelines
+- Google Search Central: [Creating Helpful, Reliable, People-First Content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
+- Google: [Search Quality Rater Guidelines](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf) (PDF)
 
 ---
 

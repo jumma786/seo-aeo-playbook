@@ -162,9 +162,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: AI Overviews Documentation
-- OpenAI: ChatGPT Search Documentation
-- Perplexity: How Perplexity Works
+- Google Search Central: [AI Features and Your Website](https://developers.google.com/search/docs/appearance/ai-features)
+- OpenAI: [ChatGPT Search](https://help.openai.com/en/articles/9237897-chatgpt-search)
+- Perplexity: [Perplexity Crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
 
 ---
 

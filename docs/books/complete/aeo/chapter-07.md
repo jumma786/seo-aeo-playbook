@@ -168,8 +168,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: E-E-A-T Guidelines
-- Anthropic, OpenAI, Perplexity citation documentation (see [Chapters 3-6](chapter-03.md))
+- Google Search Central: [Creating Helpful, Reliable, People-First Content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) — Google's documentation of E-E-A-T
+- Aggarwal et al., ["GEO: Generative Engine Optimization"](https://arxiv.org/abs/2311.09735) (KDD 2024) — the foundational study of what makes content cited by generative engines
 
 ---
 

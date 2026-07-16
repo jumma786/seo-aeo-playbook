@@ -233,8 +233,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: How Search Works
-- Google Search Central: Crawling and Indexing Documentation
+- Google Search Central: [In-Depth Guide to How Google Search Works](https://developers.google.com/search/docs/fundamentals/how-search-works)
+- Google Search Central: [Google Crawling and Indexing](https://developers.google.com/search/docs/crawling-indexing)
 
 ---
 

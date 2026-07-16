@@ -228,8 +228,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Understand How Structured Data Works
-- Wikidata Query Service Documentation
+- Google Search Central: [Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
+- Wikidata: [Query Service](https://query.wikidata.org/)
 
 ---
 

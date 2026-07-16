@@ -165,8 +165,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Reimers & Gurevych, "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"
-- MTEB: Massive Text Embedding Benchmark
+- Reimers & Gurevych, ["Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"](https://arxiv.org/abs/1908.10084)
+- Muennighoff et al., ["MTEB: Massive Text Embedding Benchmark"](https://arxiv.org/abs/2210.07316)
 
 ---
 

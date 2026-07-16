@@ -144,8 +144,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Cloud Natural Language API Documentation
-- Wikidata Query Service Documentation
+- Google Cloud: [Cloud Natural Language documentation](https://cloud.google.com/natural-language/docs)
+- Wikidata: [Query Service](https://query.wikidata.org/)
 
 ---
 

@@ -190,8 +190,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- llmstxt.org: The llms.txt Proposal
-- Individual vendor crawler documentation (OpenAI, Google, Anthropic, Perplexity)
+- [The /llms.txt file](https://llmstxt.org/) — the llms.txt proposal
+- Vendor crawler documentation: [OpenAI](https://developers.openai.com/api/docs/bots), [Google](https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers), [Anthropic](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), [Perplexity](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
 
 ---
 

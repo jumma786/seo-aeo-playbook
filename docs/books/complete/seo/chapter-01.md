@@ -247,8 +247,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: How Search Works
-- Google Search Central: SEO Starter Guide
+- Google Search Central: [In-Depth Guide to How Google Search Works](https://developers.google.com/search/docs/fundamentals/how-search-works)
+- Google Search Central: [SEO Starter Guide: The Basics](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 
 ---
 

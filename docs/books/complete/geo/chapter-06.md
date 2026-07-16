@@ -152,8 +152,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Malkov & Yashunin, "Efficient and Robust Approximate Nearest Neighbor Search Using HNSW"
-- Pinecone, Weaviate, and Qdrant documentation
+- Malkov & Yashunin, ["Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs"](https://arxiv.org/abs/1603.09320)
+- Vector database documentation: [Pinecone](https://docs.pinecone.io/), [Weaviate](https://docs.weaviate.io/), [Qdrant](https://qdrant.tech/documentation/)
 
 ---
 

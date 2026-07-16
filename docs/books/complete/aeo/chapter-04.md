@@ -149,8 +149,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: AI Overviews Documentation
-- Google Search Central: AI Mode Documentation
+- Google Search Central: [AI Features and Your Website](https://developers.google.com/search/docs/appearance/ai-features)
+- Google Search Central: [AI Features and Your Website](https://developers.google.com/search/docs/appearance/ai-features)
 
 ---
 

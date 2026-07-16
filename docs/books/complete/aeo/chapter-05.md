@@ -138,8 +138,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Perplexity: How Perplexity Works
-- Perplexity: PerplexityBot Documentation
+- Perplexity: [Perplexity Crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+- Perplexity: [Perplexity Crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
 
 ---
 

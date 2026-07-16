@@ -157,9 +157,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google: Introducing the Knowledge Graph (2012)
-- Wikidata: About Wikidata
-- Schema.org: Understanding sameAs
+- Google: [Introducing the Knowledge Graph: things, not strings](https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/) (2012)
+- Wikidata: [Introduction](https://www.wikidata.org/wiki/Wikidata:Introduction)
+- Schema.org: [sameAs](https://schema.org/sameAs)
 
 ---
 

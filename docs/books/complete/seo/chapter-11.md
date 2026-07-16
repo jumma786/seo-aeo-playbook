@@ -215,8 +215,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Link Best Practices
-- Google Search Central: Site Structure Documentation
+- Google Search Central: [SEO Link Best Practices for Google](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+- Google Search Central: [URL Structure Best Practices for Google Search](https://developers.google.com/search/docs/crawling-indexing/url-structure)
 
 ---
 

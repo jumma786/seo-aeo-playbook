@@ -230,8 +230,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Quality Rater Guidelines: Needs Met Rating
-- Google Search Central: Understanding Search Intent
+- Google: [Search Quality Rater Guidelines](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf) (PDF) — see the Needs Met rating scale
+- Google: [Search Quality Rater Guidelines](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf) (PDF) — the Needs Met scale is Google's closest published treatment of search intent
 
 ---
 

@@ -172,8 +172,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google: Google-Extended Documentation
-- Anthropic: Claude Web Search and Crawler Documentation
+- Google: [Google Crawler (User Agent) Overview](https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers) — includes the Google-Extended control
+- Anthropic: [Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
 
 ---
 

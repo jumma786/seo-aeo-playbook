@@ -244,8 +244,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Crawler Management Documentation
-- Google Search Central: robots.txt Specification
+- Google: [Google Crawler (User Agent) Overview](https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers)
+- Google: [How Google Interprets the robots.txt Specification](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)
 
 ---
 

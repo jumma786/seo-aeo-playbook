@@ -43,5 +43,5 @@ htmlcov/
 # MkDocs build output
 /site/
 
-# Local/personal Claude Code settings (shared project settings live in .claude/settings.json)
-.claude/settings.local.json
+# Claude Code settings — local to each developer, not part of the project.
+.claude/

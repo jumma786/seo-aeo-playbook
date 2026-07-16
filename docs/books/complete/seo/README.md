@@ -34,4 +34,4 @@ A complete, practitioner-grade guide to modern search engine optimization — fr
 
 ## License
 
-Content licensed under the terms in the repository [LICENSE](../../../../LICENSE).
+Content licensed under the terms in the repository [LICENSE](https://github.com/jumma786/seo-aeo-playbook/blob/main/LICENSE).

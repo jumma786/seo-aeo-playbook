@@ -139,13 +139,13 @@ CPC — what advertisers pay per click in paid search for a given keyword — is
 
 # 16. Competitor Keyword Research
 
-Analyzing which keywords competing pages rank for reveals demand you may not have discovered from your own seed terms — see [Competitor Analysis Prompts](../../../../prompts/competitor-analysis.md) for structured prompts covering this analysis.
+Analyzing which keywords competing pages rank for reveals demand you may not have discovered from your own seed terms — see [Competitor Analysis Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/competitor-analysis.md) for structured prompts covering this analysis.
 
 ---
 
 # 17. Keyword Gap Analysis
 
-A keyword gap analysis compares your own keyword coverage against competitors to surface terms they rank for that you don't — see [Content Gap Prompts](../../../../prompts/content-gap.md), and `seo-playbook entities --compare` for the entity-level equivalent.
+A keyword gap analysis compares your own keyword coverage against competitors to surface terms they rank for that you don't — see [Content Gap Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/content-gap.md), and `seo-playbook entities --compare` for the entity-level equivalent.
 
 ---
 
@@ -181,7 +181,7 @@ Keyword research must be repeated per target language and region, not simply tra
 
 # 23. AI Keyword Research
 
-AI tools can accelerate seed expansion, question mining, and intent classification (see [Keyword Research Prompts](../../../../prompts/keyword-research.md)), but should be treated as a first-draft generator, not a replacement for checking real SERP composition and actual search demand data.
+AI tools can accelerate seed expansion, question mining, and intent classification (see [Keyword Research Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/keyword-research.md)), but should be treated as a first-draft generator, not a replacement for checking real SERP composition and actual search demand data.
 
 ---
 

@@ -156,7 +156,7 @@ Featured Snippets favor content that states a direct, complete answer to a speci
 
 # 19. People Also Ask
 
-The People Also Ask box surfaces related questions tied to the same topic — a direct, low-effort source of subtopics and FAQ candidates a comprehensive piece should address. See [Content Gap Prompts](../../../../prompts/content-gap.md).
+The People Also Ask box surfaces related questions tied to the same topic — a direct, low-effort source of subtopics and FAQ candidates a comprehensive piece should address. See [Content Gap Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/content-gap.md).
 
 ---
 

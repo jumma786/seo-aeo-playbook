@@ -121,7 +121,7 @@ Some queries carry genuinely mixed or ambiguous intent, where the SERP itself sh
 
 # 10. User Journey
 
-A single searcher often moves through multiple intents over time for the same broad topic — informational research, then commercial investigation, then transactional action. Content strategy should map coverage across this journey (see [Content Brief Prompts](../../../../prompts/seo-content.md) and `seo-playbook content-brief`) rather than only targeting the bottom-of-funnel transactional query.
+A single searcher often moves through multiple intents over time for the same broad topic — informational research, then commercial investigation, then transactional action. Content strategy should map coverage across this journey (see [Content Brief Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/seo-content.md) and `seo-playbook content-brief`) rather than only targeting the bottom-of-funnel transactional query.
 
 ---
 
@@ -139,7 +139,7 @@ Once classified, each keyword should be mapped to exactly one target page whose 
 
 # 13. SERP Analysis
 
-Analyzing the current top-ranking pages for a target query — their content type, structure, and depth — is the most direct way to confirm intent before committing to a content format. See [Competitor Analysis Prompts](../../../../prompts/competitor-analysis.md) for a structured version of this analysis (also called SERP "backwards analysis").
+Analyzing the current top-ranking pages for a target query — their content type, structure, and depth — is the most direct way to confirm intent before committing to a content format. See [Competitor Analysis Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/competitor-analysis.md) for a structured version of this analysis (also called SERP "backwards analysis").
 
 ---
 
@@ -157,7 +157,7 @@ Featured Snippets predominantly win informational, question-phrased queries with
 
 # 16. People Also Ask
 
-The People Also Ask box surfaces related questions largely tied to informational intent, offering a direct signal of adjacent sub-topics and questions a comprehensive piece should address. Mining these questions is a practical, low-effort keyword and content-gap research technique — see [Content Gap Prompts](../../../../prompts/content-gap.md).
+The People Also Ask box surfaces related questions largely tied to informational intent, offering a direct signal of adjacent sub-topics and questions a comprehensive piece should address. Mining these questions is a practical, low-effort keyword and content-gap research technique — see [Content Gap Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/content-gap.md).
 
 ---
 

@@ -119,7 +119,7 @@ A visible editorial policy — describing how content is researched, fact-checke
 
 # 13. Sources and Citations
 
-Citing sources for factual claims, especially statistics and YMYL information, lets readers (and search engines) verify accuracy independently rather than taking a claim purely on the author's authority. See [E-E-A-T Prompts](../../../../prompts/eeat.md) for drafting prompts to strengthen citations in a draft.
+Citing sources for factual claims, especially statistics and YMYL information, lets readers (and search engines) verify accuracy independently rather than taking a claim purely on the author's authority. See [E-E-A-T Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/eeat.md) for drafting prompts to strengthen citations in a draft.
 
 ---
 

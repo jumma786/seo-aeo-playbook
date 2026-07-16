@@ -167,7 +167,7 @@ After completing this chapter, you will understand:
 
 # References
 
-- OpenAI, Anthropic, and Google prompt engineering documentation
+- Prompt engineering documentation: [OpenAI](https://developers.openai.com/api/docs/guides/prompt-engineering), [Anthropic](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview), [Google](https://ai.google.dev/gemini-api/docs/prompting-strategies)
 - This book's own [Chapter 7](chapter-07.md) on passage-level citability
 
 ---

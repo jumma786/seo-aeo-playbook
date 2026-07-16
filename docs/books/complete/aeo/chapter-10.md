@@ -179,7 +179,7 @@ After completing this chapter, you will understand:
 
 # References
 
-- GA4 Documentation: Custom Channel Groupings
+- Google Analytics Help: [Custom channel groups](https://support.google.com/analytics/answer/13051316)
 - Server log analysis tooling documentation (see `scripts/` in this repository)
 
 ---

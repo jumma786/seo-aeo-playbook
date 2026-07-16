@@ -180,9 +180,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
-- Google Search Central: How AI Overviews Work
-- OpenAI: Search Tool Documentation
+- Lewis et al., ["Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"](https://arxiv.org/abs/2005.11401)
+- Google Search Central: [AI Features and Your Website](https://developers.google.com/search/docs/appearance/ai-features)
+- OpenAI: [Web search](https://developers.openai.com/api/docs/guides/tools-web-search)
 
 ---
 

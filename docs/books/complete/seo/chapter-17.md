@@ -188,8 +188,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Site Structure Documentation
-- Google Search Central: Managing Crawl Budget for Large Sites
+- Google Search Central: [URL Structure Best Practices for Google Search](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+- Google: [Crawl Budget Management](https://developers.google.com/crawling/docs/crawl-budget)
 
 ---
 

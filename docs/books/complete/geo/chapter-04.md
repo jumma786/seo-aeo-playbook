@@ -147,8 +147,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google: Understanding Searches Better Than Ever Before (BERT announcement)
-- Devlin et al., "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+- Google: [Understanding searches better than ever before](https://blog.google/products-and-platforms/products/search/search-language-understanding-bert/) — the BERT announcement
+- Devlin et al., ["BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"](https://arxiv.org/abs/1810.04805)
 
 ---
 

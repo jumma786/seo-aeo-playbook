@@ -199,9 +199,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Business Profile Help Center
-- Google Search Central: Local Search Guidelines
-- Local SEO Guide: NAP Consistency Best Practices
+- Google: [Google Business Profile Help](https://support.google.com/business)
+- Google Business Profile Help: [Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177)
+- Google Business Profile Help: [Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177)
 
 ---
 

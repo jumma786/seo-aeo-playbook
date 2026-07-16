@@ -163,8 +163,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- OpenAI: Search Documentation
-- OpenAI: GPTBot and Crawler Documentation
+- OpenAI: [ChatGPT Search](https://help.openai.com/en/articles/9237897-chatgpt-search)
+- OpenAI: [Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots)
 
 ---
 

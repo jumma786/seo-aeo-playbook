@@ -215,9 +215,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Console Help Center
-- Google Analytics 4 Documentation
-- Google Search Central: Debugging Traffic Drops
+- Google: [Search Console Help](https://support.google.com/webmasters)
+- Google: [Analytics Help](https://support.google.com/analytics)
+- Google Search Central: [Debug Google Search Traffic Drops](https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops)
 
 ---
 

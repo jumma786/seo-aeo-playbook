@@ -231,8 +231,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Understanding Core Web Vitals and Google Search Results
-- web.dev: Core Web Vitals Documentation
+- Google Search Central: [Understanding Core Web Vitals and Google search results](https://developers.google.com/search/docs/appearance/core-web-vitals)
+- web.dev: [Web Vitals](https://web.dev/articles/vitals)
 
 ---
 

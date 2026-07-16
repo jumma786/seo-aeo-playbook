@@ -202,9 +202,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Mobile-First Indexing Best Practices
-- Google Search Console: Mobile Usability Report
-- web.dev: Mobile UX Guidelines
+- Google Search Central: [Mobile-first Indexing Best Practices](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing)
+- Chrome for Developers: [Introduction to Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) — Google retired the Search Console Mobile Usability report on 1 December 2023 and points to Lighthouse instead
+- web.dev: [Learn Responsive Design](https://web.dev/learn/design)
 
 ---
 

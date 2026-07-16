@@ -1,147 +1,178 @@
-# 🚀 SEO / AEO / GEO Playbook
-
 <div align="center">
 
-![SEO](https://img.shields.io/badge/SEO-38%20chapters-blue?style=for-the-badge)
-![AEO](https://img.shields.io/badge/AEO-Answer%20Engine-green?style=for-the-badge)
-![GEO](https://img.shields.io/badge/GEO-Generative%20Engine-orange?style=for-the-badge)
-![License](https://img.shields.io/github/license/jumma786/seo-aeo-playbook?style=for-the-badge)
-![Stars](https://img.shields.io/github/stars/jumma786/seo-aeo-playbook?style=for-the-badge)
-![Forks](https://img.shields.io/github/forks/jumma786/seo-aeo-playbook?style=for-the-badge)
+# SEO / AEO / GEO Playbook
 
-## 📈 A Complete, Practitioner-Grade Guide to SEO, AEO & GEO — Plus a CLI + API Toolkit That Implements It
+**A practitioner-grade guide to search visibility — and a tested Python toolkit that implements it.**
 
-*From crawling fundamentals to AI-generated answers: rank on Google and get cited by ChatGPT, Google AI Overviews, Gemini, Claude, and Perplexity.*
+Rank on Google. Get cited by ChatGPT, AI Overviews, Gemini, Claude, and Perplexity.
 
-⭐ **Star this repository if you find it useful!**
+[![Docs](https://img.shields.io/badge/docs-live-2ea44f)](https://jumma786.github.io/seo-aeo-playbook/)
+[![Markdown](https://github.com/jumma786/seo-aeo-playbook/actions/workflows/markdown.yml/badge.svg)](https://github.com/jumma786/seo-aeo-playbook/actions/workflows/markdown.yml)
+[![Tests](https://img.shields.io/badge/tests-483%20passing-2ea44f)](tests/)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+[**Read the docs**](https://jumma786.github.io/seo-aeo-playbook/) · [**CLI reference**](docs/cli-reference.md) · [**Start with the SEO Book**](docs/books/complete/seo/README.md)
 
 </div>
 
 ---
 
-# 📖 About
+## Why this exists
 
-Search is changing. Ranking on Google is no longer enough — content also needs to be retrievable, citable, and structured in a way AI answer engines can use.
+Ranking on Google is no longer the whole job. The same content now has to be **retrievable, citable, and structurally unambiguous** to answer engines that synthesize responses instead of returning ten blue links.
 
-This repository is two things at once:
+Most SEO resources give you prose you can't execute, or tools that don't explain themselves. This repository is deliberately both halves:
 
-1. **Three complete books** (38 chapters) covering traditional SEO, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) — the technology stack underneath AI search.
-2. **A working Python toolkit** — a CLI and a FastAPI service — that implements the practices those books describe: schema generation and validation, sitemap/robots.txt/llms.txt generation, keyword clustering and cannibalization audits, entity extraction, internal link suggestions, page-speed and full-site audits, content briefs, FAQ generation, and governed local-SEO page templates.
+- **38 chapters** across three books that explain the mechanics — not tips, but how crawling, indexing, ranking, retrieval, and citation actually work.
+- **A tested Python toolkit** — 22 CLI commands and a 25-endpoint HTTP API — that implements the practices those chapters describe.
 
-Whether you're reading to learn or scripting against the CLI/API to automate your own SEO workflow, this project is built to be actually used, not just read.
+Every chapter points at the command that automates it. Every command traces back to the chapter that justifies it.
 
----
+## Quick start
 
-# ✨ What's Actually Here
+```bash
+git clone https://github.com/jumma786/seo-aeo-playbook.git
+cd seo-aeo-playbook
+pip install -e .
 
-| Component | Status | Where |
+seo-playbook --help
+```
+
+Audit a live page in one command:
+
+```bash
+seo-playbook audit https://example.com
+```
+
+A few more of the 21 commands:
+
+```bash
+# Scaffold a project config that other commands read defaults from
+seo-playbook init --brand "Example Corp" --domain example.com
+
+# Generate validated Schema.org JSON-LD
+seo-playbook schema article --headline "..." --author "..." --date-published 2026-01-15
+
+# Group keywords into topic clusters, then find cannibalization
+seo-playbook cluster keywords.txt
+seo-playbook keyword-map audit mapping.json
+
+# SEO + schema + performance across many URLs, one fetch per page
+seo-playbook site-audit urls.txt
+```
+
+See the [CLI reference](docs/cli-reference.md) for all 21 commands and their options.
+
+## What's inside
+
+| Component | Status | Location |
 |---|---|---|
-| **SEO Book** (20 chapters) | ✅ Complete | [`docs/books/complete/seo/`](docs/books/complete/seo/README.md) |
-| **AEO Book** (10 chapters) | ✅ Complete | [`docs/books/complete/aeo/`](docs/books/complete/aeo/README.md) |
-| **GEO Book** (8 chapters) | ✅ Complete | [`docs/books/complete/geo/`](docs/books/complete/geo/README.md) |
-| **CLI** (`seo-playbook`, 24 commands) | ✅ Complete, fully tested | [`cli/`](cli/) |
-| **Python toolkit** (24 scripts) | ✅ Complete, fully tested | [`scripts/`](scripts/) |
-| **FastAPI service** (~25 endpoints) | ✅ Complete, fully tested | [`api/`](api/) |
-| **Documentation site** (MkDocs) | ✅ Configured, builds clean | [`mkdocs.yml`](mkdocs.yml), [`docs/`](docs/) |
-| Prompt library / checklists / templates / case studies | 🚧 Scaffolded, not yet populated | `prompts/`, `checklists/`, `templates/`, `examples/` |
+| **SEO Book** — 20 chapters | Complete | [`docs/books/complete/seo/`](docs/books/complete/seo/README.md) |
+| **AEO Book** — 10 chapters | Complete | [`docs/books/complete/aeo/`](docs/books/complete/aeo/README.md) |
+| **GEO Book** — 8 chapters | Complete | [`docs/books/complete/geo/`](docs/books/complete/geo/README.md) |
+| **CLI** — 21 commands | Complete, tested | [`cli/`](cli/) |
+| **Toolkit** — 24 modules | Complete, tested | [`scripts/`](scripts/) |
+| **HTTP API** — 25 endpoints | Complete, tested | [`api/`](api/) |
+| **Documentation site** — MkDocs | [Live](https://jumma786.github.io/seo-aeo-playbook/) | [`mkdocs.yml`](mkdocs.yml) |
+| **Prompt library** — 13 prompts | Complete | [`prompts/`](prompts/) |
+| **Checklists** — 6 checklists | Complete | [`checklists/`](checklists/) |
+| **Templates** — 6 templates | Complete | [`templates/`](templates/) |
+| **Case studies** — 2 walkthroughs | Complete | [`examples/case-studies/`](examples/case-studies/) |
 
-The repository also contains a large amount of early scaffolding (empty directories and 0-byte files under the repo root and `docs/`) from initial planning that was never built out. It's harmless — nothing references it — but don't take its presence as a signal of what's actually implemented; the table above is the accurate picture.
+> **A note on repository sprawl.** Early planning left a large number of empty directories and 0-byte files across the repo root, `docs/`, and `examples/`. Nothing references them and nothing depends on them. The table above is the accurate picture of what's real — treat everything else as scaffolding pending cleanup.
 
----
+## The three books
 
-# 🧰 Using the Toolkit
+They're written to be read in order, and each cross-references the others throughout.
 
-Install the package and its CLI entry point:
+**1. [SEO](docs/books/complete/seo/README.md)** — the foundation. How search engines crawl, render, index, and rank; search intent, keyword research, content optimization, entity SEO, internal linking, E-E-A-T, Core Web Vitals, and local SEO.
+
+**2. [AEO](docs/books/complete/aeo/README.md)** — Answer Engine Optimization. How to become the cited source: passage-level citability, AI crawler access and `llms.txt`, and platform-specific tactics for ChatGPT, AI Overviews, Perplexity, Gemini, and Claude.
+
+**3. [GEO](docs/books/complete/geo/README.md)** — Generative Engine Optimization, one layer deeper. Knowledge graphs, embeddings, vector search, and RAG — the retrieval machinery that explains *why* every AEO tactic works.
+
+If you only read one thing first, read the SEO book's opening chapters. AEO without the crawling and indexing fundamentals is cargo-culting.
+
+## The toolkit
+
+The 24 modules in `scripts/` are plain, dependency-light Python with docstrings and doctests. They're exposed two ways.
+
+### CLI
 
 ```bash
 pip install -e .
 seo-playbook --help
 ```
 
-Every practice documented in the books has a corresponding command — see the [CLI Reference](docs/cli-reference.md) for the full list. A few examples:
+Covers schema generation and validation, sitemap/robots.txt/llms.txt generation, on-page and full-site audits, page-speed analysis, link checking, keyword clustering and cannibalization audits, entity extraction, internal link suggestions, GEO citability scoring, content briefs, FAQ and blog scaffolding, and governed local-SEO page templates.
+
+Optional YAML config (`seo-playbook.yml`, auto-discovered) supplies `brand` / `domain` / `output_dir` defaults so you don't repeat yourself:
 
 ```bash
-seo-playbook init --brand "Example Corp" --domain example.com   # scaffold a project config
-seo-playbook audit https://example.com                          # on-page SEO audit
-seo-playbook schema article --headline "..." --author "..." --date-published 2026-01-15
-seo-playbook cluster keywords.txt                                # lexical keyword clustering
-seo-playbook site-audit urls.txt                                 # SEO + schema + page-speed, one pass
+seo-playbook init --brand "Example Corp" --domain example.com
 ```
 
-## Run the API
+### HTTP API
 
 ```bash
 pip install -e ".[api]"
 uvicorn api.app:app --reload
 ```
 
-Then open `http://127.0.0.1:8000/docs` for interactive Swagger UI over every endpoint. The API mirrors the CLI's capabilities; see [`api/routes.py`](api/routes.py) for the full endpoint list and its documented trust-boundary assumptions (no auth — built for local/trusted use, not a public multi-tenant service).
+Interactive Swagger UI at `http://127.0.0.1:8000/docs`; `/health` is a liveness probe.
 
-## Run the documentation site locally
+> **Trust boundary — read before deploying.** The API ships **without authentication by design**. It's built for local and trusted-network use alongside the CLI, not as a public multi-tenant service. Two endpoints deliberately diverge from their CLI equivalents for this reason: the page generators return rendered content in the response rather than writing to a server-side path, and the book-docs endpoints accept content in the request body rather than reading a server-side directory. Both avoid handing a client arbitrary filesystem access. See [`api/routes.py`](api/routes.py) for details.
+
+### Documentation site
 
 ```bash
 pip install -e ".[docs]"
 mkdocs serve
 ```
 
----
-
-# 📂 Repository Structure
+## Repository structure
 
 ```text
 seo-aeo-playbook/
-├── docs/books/complete/{seo,aeo,geo}/   # the three books (38 chapters), canonical location
-├── docs/                                 # MkDocs site content (index, CLI reference, book pages)
-├── scripts/                              # 24 standalone Python modules implementing the toolkit
-├── cli/                                  # click-based CLI wiring scripts/ up as `seo-playbook`
-├── api/                                  # FastAPI service wiring scripts/ up over HTTP
-├── tests/                                # full pytest suite (400+ tests) for scripts/cli/api
-├── mkdocs.yml                            # documentation site configuration
-├── pyproject.toml                        # packaging, CLI entry point, optional dependency groups
-└── prompts/ checklists/ templates/ examples/case-studies/   # content library
+├── docs/books/complete/{seo,aeo,geo}/   # the three books (38 chapters) — canonical location
+├── docs/                                # MkDocs content (index, CLI reference)
+├── scripts/                             # 24 modules implementing the toolkit
+├── cli/                                 # click CLI exposing scripts/ as `seo-playbook`
+├── api/                                 # FastAPI service exposing scripts/ over HTTP
+├── tests/                               # 483-test pytest suite across scripts/cli/api
+├── prompts/ checklists/ templates/      # content library
+├── examples/case-studies/               # applied walkthroughs
+├── mkdocs.yml                           # docs site config
+└── pyproject.toml                       # packaging, entry point, dependency groups
 ```
 
----
+## Development
 
-# 🛣 Reading Order
+```bash
+pip install -e ".[dev]"
+python -m pytest tests/ -q
+```
 
-The three books build on each other:
+The suite runs in a few seconds and requires no network access or API keys.
 
-1. **SEO** establishes the foundation — crawling, indexing, ranking, on-page and technical SEO.
-2. **AEO** extends that into AI answer engines — platform-specific tactics for ChatGPT, Google AI Overviews, Perplexity, Gemini, and Claude.
-3. **GEO** goes one layer deeper into the retrieval technology (knowledge graphs, embeddings, vector search, RAG) that makes every AEO tactic work mechanically.
+## Contributing
 
-Each book cross-references the others throughout its chapters.
+Contributions are welcome — issues and pull requests both.
 
----
+1. Fork and create a feature branch.
+2. Add tests for any new `scripts/`, `cli/`, or `api/` code. Match the established pattern: one `TestXxx` class per function, doctests in the module itself.
+3. Run the full suite (`python -m pytest tests/ -q`) before opening the PR.
+4. Open a pull request describing what changed and why.
 
-# 🎯 Who Is This For?
+For book content, follow the structure of an existing chapter: numbered sections, Best Practices, Common Mistakes, Checklist, Summary, Learning Outcomes, References.
 
-SEO professionals, marketing agencies, freelancers, developers, startup founders, business owners, students, bloggers, content writers, and digital marketers — anyone who wants both the conceptual grounding and working tools for modern search visibility.
+## License
 
----
-
-# 🤝 Contributing
-
-Contributions are welcome. To propose a change:
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for any new `scripts/`, `cli/`, or `api/` code (see existing modules for the established pattern)
-4. Open a Pull Request
-
----
-
-# 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
+[MIT](LICENSE) © 2026 Jumma Mohammad
 
 <div align="center">
 
-## 🚀 Learn SEO. Master AI Search. Automate the Practice
-
-**Made with ❤️ by [Jumma Mohammad](https://github.com/jumma786)**
+**Built by [Jumma Mohammad](https://github.com/jumma786)** · [Read the docs](https://jumma786.github.io/seo-aeo-playbook/)
 
 </div>

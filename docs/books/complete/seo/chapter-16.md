@@ -199,9 +199,9 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Managing Multi-Regional and Multilingual Sites
-- Google Search Central: hreflang Documentation
-- ISO 639-1 Language Codes / ISO 3166-1 Country Codes
+- Google Search Central: [Managing Multi-Regional and Multilingual Sites](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)
+- Google Search Central: [Localized Versions of your Pages](https://developers.google.com/search/docs/specialty/international/localized-versions) — the hreflang reference
+- ISO: [ISO 639 Language codes](https://www.iso.org/iso-639-language-codes.html) and [ISO 3166 Country codes](https://www.iso.org/iso-3166-country-codes.html)
 
 ---
 

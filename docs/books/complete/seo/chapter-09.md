@@ -156,7 +156,7 @@ Featured Snippets favor content that states a direct, complete answer to a speci
 
 # 19. People Also Ask
 
-The People Also Ask box surfaces related questions tied to the same topic — a direct, low-effort source of subtopics and FAQ candidates a comprehensive piece should address. See [Content Gap Prompts](../../../../prompts/content-gap.md).
+The People Also Ask box surfaces related questions tied to the same topic — a direct, low-effort source of subtopics and FAQ candidates a comprehensive piece should address. See [Content Gap Prompts](https://github.com/jumma786/seo-aeo-playbook/blob/main/prompts/content-gap.md).
 
 ---
 
@@ -240,8 +240,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Helpful Content Guidelines
-- Google Search Quality Rater Guidelines
+- Google Search Central: [Creating Helpful, Reliable, People-First Content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
+- Google: [Search Quality Rater Guidelines](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf) (PDF)
 
 ---
 

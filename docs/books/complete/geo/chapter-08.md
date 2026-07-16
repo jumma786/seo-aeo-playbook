@@ -161,7 +161,7 @@ After completing this chapter, you will understand:
 
 # References
 
-- Vaswani et al., "Attention Is All You Need" (the transformer architecture underlying modern LLMs)
+- Vaswani et al., ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) — the transformer architecture underlying modern LLMs
 - This book series in full: the [SEO Book](../seo/README.md), the [AEO Book](../aeo/README.md), and this GEO Book
 
 ---

@@ -30,8 +30,6 @@ from api.models import (
     FaqGenerateRequest,
     FaqGenerateResponse,
     FaqSchemaRequest,
-    GeoScoreRequest,
-    GeoScoreResponse,
     KeywordClusterRequest,
     KeywordClusterResponse,
     KeywordMapSuggestRequest,
@@ -354,34 +352,6 @@ def links_suggest(request: LinkSuggestRequest) -> LinkSuggestResponse:
             for s in suggestions
         ],
         orphan_pages=find_orphan_pages(pages),
-    )
-
-
-# --------------------------------------------------------------------------
-# GEO
-# --------------------------------------------------------------------------
-
-
-@router.post("/geo/score", response_model=GeoScoreResponse)
-def geo_score_endpoint(request: GeoScoreRequest) -> GeoScoreResponse:
-    from scripts.geo_optimizer import score_content, split_into_passages
-
-    scores = score_content(split_into_passages(request.text))
-    average = round(sum(s.score for s in scores) / len(scores), 1) if scores else 0.0
-    return GeoScoreResponse(
-        passages=[
-            {
-                "text": s.text,
-                "word_count": s.word_count,
-                "self_contained": s.self_contained,
-                "has_specific_fact": s.has_specific_fact,
-                "has_structural_label": s.has_structural_label,
-                "score": s.score,
-                "issues": s.issues,
-            }
-            for s in scores
-        ],
-        average_score=average,
     )
 
 

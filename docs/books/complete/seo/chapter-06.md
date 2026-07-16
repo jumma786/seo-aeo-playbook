@@ -234,8 +234,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: How Search Algorithms Work
-- Google Search Central: Core Updates Documentation
+- Google Search Central: [A Guide to Google Search Ranking Systems](https://developers.google.com/search/docs/appearance/ranking-systems-guide)
+- Google Search Central: [Google Search's Core Updates](https://developers.google.com/search/docs/appearance/core-updates)
 
 ---
 

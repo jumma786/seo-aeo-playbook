@@ -14,7 +14,7 @@ Synthesized from the per-chapter checklists across the [AEO Book](../docs/books/
 
 - [ ] Each key section/passage is self-contained — understandable without reading the rest of the page (no opening with "it"/"this" referring outside the passage)
 - [ ] Each section opens with a direct answer or claim before supporting detail
-- [ ] Facts are specific and checkable, not vague — `seo-playbook geo-score` flags passages missing a specific/checkable fact
+- [ ] Facts are specific and checkable, not vague — name figures, dates, and sources rather than asserting that something is "fast" or "widely used"
 - [ ] Clear structural signals used throughout: descriptive subheadings, lists, short paragraphs, explicit labels ("Definition:", "Step 1:")
 - [ ] Authorship and publication/modification dates visible and reinforced with `Article` schema
 

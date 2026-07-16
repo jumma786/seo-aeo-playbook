@@ -26,8 +26,6 @@ from scripts.generate_readme import DEFAULT_LICENSE_PATH
 from scripts.generate_readme import generate_readme as build_readme
 from scripts.generate_readme import related_books_from_dict
 from scripts.generate_toc import ChapterParseError, generate_toc_from_directory
-from scripts.geo_optimizer import extract_passages_from_html, score_content, split_into_passages
-from scripts.geo_optimizer import format_report as format_geo_report
 from scripts.init import InitError, init_project
 from scripts.internal_linker import format_report as format_linking_report
 from scripts.internal_linker import pages_from_dict, suggest_internal_links
@@ -373,25 +371,6 @@ def faq(faq_file: str, output: str | None) -> None:
     except ValueError as exc:
         raise click.ClickException(str(exc)) from exc
     _emit(content, output)
-
-
-@cli.command("geo-score")
-@click.argument("content_file", type=click.Path(exists=True, dir_okay=False))
-def geo_score(content_file: str) -> None:
-    """Score content passages for GEO/AI-citation readiness.
-
-    A .html file has its <p> tags scored; any other file is treated as
-    plain text/Markdown, split into blank-line-separated paragraphs.
-    """
-    with open(content_file, encoding="utf-8") as f:
-        content = f.read()
-
-    if content_file.lower().endswith(".html"):
-        passages = extract_passages_from_html(content)
-    else:
-        passages = split_into_passages(content)
-
-    click.echo(format_geo_report(score_content(passages)))
 
 
 @cli.command("entities")

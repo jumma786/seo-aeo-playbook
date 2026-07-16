@@ -391,8 +391,8 @@ After completing this chapter, you will understand:
 # References
 
 - Schema.org vocabulary: https://schema.org
-- Google Search Central: Structured Data Markup
-- Google Rich Results Test
+- Google Search Central: [Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
+- Google: [Rich Results Test](https://search.google.com/test/rich-results)
 
 ---
 

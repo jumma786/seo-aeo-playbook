@@ -226,8 +226,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Index Coverage Report Documentation
-- Google Search Central: Consolidating Duplicate URLs
+- Search Console Help: [Page indexing report](https://support.google.com/webmasters/answer/7440203) (formerly the Index Coverage report)
+- Google Search Central: [How to Specify a Canonical with rel="canonical" and Other Methods](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 
 ---
 

@@ -194,8 +194,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: Link Spam Documentation
-- Google Search Central: Qualify Your Outbound Links
+- Google Search Central: [Spam Policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies)
+- Google Search Central: [Qualify Outbound Links for SEO](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
 
 ---
 

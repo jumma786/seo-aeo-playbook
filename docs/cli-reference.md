@@ -101,10 +101,6 @@ Extract entity mentions (Person/Organization/Date) with a frequency-based salien
 
 Suggest internal links and flag orphan pages from a JSON page list (`url`, `title`, `body`, `keywords`, `links_to`). `--max-per-page INTEGER` (default `5`).
 
-### `geo-score CONTENT_FILE`
-
-Score content passages for AI-citation readiness (self-contained subject naming, passage length, specific facts, structural labels). A `.html` file has its `<p>` tags scored; anything else is treated as Markdown/plain text split on blank lines.
-
 ## Content generation
 
 ### `meta`

@@ -165,8 +165,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
-- Gao et al., "Retrieval-Augmented Generation for Large Language Models: A Survey"
+- Lewis et al., ["Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"](https://arxiv.org/abs/2005.11401)
+- Gao et al., ["Retrieval-Augmented Generation for Large Language Models: A Survey"](https://arxiv.org/abs/2312.10997)
 
 ---
 

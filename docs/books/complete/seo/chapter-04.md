@@ -207,8 +207,8 @@ After completing this chapter, you will understand:
 
 # References
 
-- Google Search Central: JavaScript SEO Basics
-- Google Search Central: Understanding the JavaScript SEO Basics — Rendering on Google Search
+- Google Search Central: [Understand JavaScript SEO Basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+- Google Search Central: [Understand JavaScript SEO Basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
 ---
 

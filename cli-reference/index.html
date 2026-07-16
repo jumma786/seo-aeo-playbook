@@ -1,0 +1,2813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A complete, practitioner-grade guide to SEO, AEO, and GEO, paired with a Python CLI toolkit.">
+      
+      
+      
+        <link rel="canonical" href="https://jumma786.github.io/seo-aeo-playbook/cli-reference/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../books/complete/seo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CLI Reference - SEO / AEO / GEO Playbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SEO / AEO / GEO Playbook" class="md-header__button md-logo" aria-label="SEO / AEO / GEO Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SEO / AEO / GEO Playbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jumma786/seo-aeo-playbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jumma786/seo-aeo-playbook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../books/complete/seo/" class="md-tabs__link">
+          
+  
+  
+  SEO Book
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../books/complete/aeo/" class="md-tabs__link">
+          
+  
+  
+  AEO Book
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../books/complete/geo/" class="md-tabs__link">
+          
+  
+  
+  GEO Book
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SEO / AEO / GEO Playbook" class="md-nav__button md-logo" aria-label="SEO / AEO / GEO Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SEO / AEO / GEO Playbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jumma786/seo-aeo-playbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jumma786/seo-aeo-playbook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema &amp; validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema &amp; validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-article" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema article
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-faq-json_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema faq JSON_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-validate-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema validate INPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        audit URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-speed-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        page-speed URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site-audit-urls_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site-audit URLS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-links-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check-links INPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sitemaps-robotstxt-and-llmstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sitemaps, robots.txt, and llms.txt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sitemaps, robots.txt, and llms.txt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sitemap-urls_file-output_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sitemap URLS_FILE OUTPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robots-output_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        robots OUTPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llms-generate-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llms generate SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llms-audit-crawlers-robots_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llms audit-crawlers ROBOTS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords-entities-and-internal-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keywords, entities, and internal linking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords, entities, and internal linking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-keywords_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cluster KEYWORDS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-map-audit-mappings_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keyword-map audit MAPPINGS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-map-suggest-keywords_file-pages_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keyword-map suggest KEYWORDS_FILE PAGES_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entities-content_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entities CONTENT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-suggestions-pages_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        link-suggestions PAGES_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        meta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-brief-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        content-brief SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faq-faq_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        faq FAQ_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blog-scaffold-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        blog-scaffold SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-seo-page-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local SEO page generators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local SEO page generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#location-pages-specs_file-output_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location-pages SPECS_FILE OUTPUT_DIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-pages-specs_file-output_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        service-pages SPECS_FILE OUTPUT_DIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-toc-book_directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-toc BOOK_DIRECTORY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-readme-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-readme SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init [DIRECTORY]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SEO Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SEO Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. How Search Engines Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Crawling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Rendering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ranking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Search Intent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Keyword Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Content Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Entity SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Internal Linking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. E-E-A-T
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Core Web Vitals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Structured Data & Schema Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Mobile SEO & Mobile-First Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. International SEO & Hreflang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Site Architecture & URL Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Off-Page SEO & Link Building
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Local SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/seo/chapter-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. SEO Analytics & Measuring Success
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEO Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AEO Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to AEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. How AI Search Engines Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Optimizing for ChatGPT Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Optimizing for Google AI Overviews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Optimizing for Perplexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Optimizing for Gemini & Claude
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. AI Citations & Passage-Level Citability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. llms.txt & AI Crawler Accessibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Prompt Engineering for AEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/aeo/chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. AEO Measurement & Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GEO Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GEO Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to GEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Knowledge Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Entities & Entity Linking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Semantic Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Embeddings & Vector Representations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Vector Search & Retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Retrieval-Augmented Generation (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/complete/geo/chapter-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. How LLMs Generate Answers & GEO Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema &amp; validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema &amp; validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-article" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema article
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-faq-json_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema faq JSON_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-validate-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schema validate INPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        audit URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-speed-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        page-speed URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site-audit-urls_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site-audit URLS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-links-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check-links INPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sitemaps-robotstxt-and-llmstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sitemaps, robots.txt, and llms.txt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sitemaps, robots.txt, and llms.txt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sitemap-urls_file-output_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sitemap URLS_FILE OUTPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robots-output_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        robots OUTPUT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llms-generate-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llms generate SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llms-audit-crawlers-robots_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llms audit-crawlers ROBOTS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords-entities-and-internal-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keywords, entities, and internal linking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords, entities, and internal linking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-keywords_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cluster KEYWORDS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-map-audit-mappings_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keyword-map audit MAPPINGS_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-map-suggest-keywords_file-pages_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keyword-map suggest KEYWORDS_FILE PAGES_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entities-content_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entities CONTENT_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-suggestions-pages_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        link-suggestions PAGES_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        meta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-brief-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        content-brief SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faq-faq_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        faq FAQ_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blog-scaffold-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        blog-scaffold SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-seo-page-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local SEO page generators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local SEO page generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#location-pages-specs_file-output_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location-pages SPECS_FILE OUTPUT_DIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-pages-specs_file-output_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        service-pages SPECS_FILE OUTPUT_DIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-toc-book_directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-toc BOOK_DIRECTORY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-readme-spec_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-readme SPEC_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init [DIRECTORY]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jumma786/seo-aeo-playbook/edit/main/docs/cli-reference.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="cli-reference">CLI Reference<a class="headerlink" href="#cli-reference" title="Permanent link">&para;</a></h1>
+<p>The <code>seo-playbook</code> command wires every <code>scripts/</code> module up as a subcommand. Install the package (<code>pip install -e .</code>) to get the <code>seo-playbook</code> entry point, or run any command as <code>python -m cli.main &lt;command&gt;</code>.</p>
+<div class="highlight"><pre><span></span><code>seo-playbook<span class="w"> </span>--help
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Usage: seo-playbook [OPTIONS] COMMAND [ARGS]...
+
+  seo-playbook: SEO, AEO, and GEO automation toolkit.
+
+Options:
+  --config FILE  Path to a seo-playbook.yml config file (defaults to ./seo-
+                 playbook.yml if present).
+  -v, --verbose  Enable debug logging.
+  --help         Show this message and exit.
+</code></pre></div>
+<p>Run <code>seo-playbook init</code> in a project directory to create a <code>seo-playbook.yml</code> with <code>brand</code>/<code>domain</code>/<code>output_dir</code>/<code>default_similarity_threshold</code> defaults — several commands below (<code>robots</code>, <code>meta</code>, <code>cluster</code>, <code>keyword-map suggest</code>) read from it automatically.</p>
+<h2 id="schema-validation">Schema &amp; validation<a class="headerlink" href="#schema-validation" title="Permanent link">&para;</a></h2>
+<h3 id="schema-article"><code>schema article</code><a class="headerlink" href="#schema-article" title="Permanent link">&para;</a></h3>
+<p>Generate an <code>Article</code> schema and print it as a <code>&lt;script&gt;</code> tag.</p>
+<div class="highlight"><pre><span></span><code>Options:
+  --headline TEXT        [required]
+  --author TEXT          [required]
+  --date-published TEXT  [required]
+  --date-modified TEXT
+  --output FILE          Write to a file instead of stdout.
+</code></pre></div>
+<h3 id="schema-faq-json_file"><code>schema faq JSON_FILE</code><a class="headerlink" href="#schema-faq-json_file" title="Permanent link">&para;</a></h3>
+<p>Generate a <code>FAQPage</code> schema from a JSON file of <code>[question, answer]</code> pairs. <code>--output FILE</code> writes to a file instead of stdout.</p>
+<h3 id="schema-validate-input_file"><code>schema validate INPUT_FILE</code><a class="headerlink" href="#schema-validate-input_file" title="Permanent link">&para;</a></h3>
+<p>Validate JSON-LD markup in an HTML page (extracts every <code>&lt;script type="application/ld+json"&gt;</code> block) or a standalone <code>.json</code> schema file. Exits non-zero if any error-severity issue is found — usable as a CI gate.</p>
+<h2 id="audits">Audits<a class="headerlink" href="#audits" title="Permanent link">&para;</a></h2>
+<h3 id="audit-url"><code>audit URL</code><a class="headerlink" href="#audit-url" title="Permanent link">&para;</a></h3>
+<p>Fetch a URL and run an on-page SEO audit (title/meta length, headings, images, canonical, robots meta, thin content, internal/external links). <code>--timeout FLOAT</code> (default <code>10.0</code>).</p>
+<h3 id="page-speed-url"><code>page-speed URL</code><a class="headerlink" href="#page-speed-url" title="Permanent link">&para;</a></h3>
+<p>Fetch a URL and run a static page-speed audit: render-blocking scripts/stylesheets, images missing width/height (CLS risk), missing <code>loading="lazy"</code>, unoptimized Google Fonts, page weight, and measured time-to-first-byte. <code>--timeout FLOAT</code> (default <code>10.0</code>).</p>
+<h3 id="site-audit-urls_file"><code>site-audit URLS_FILE</code><a class="headerlink" href="#site-audit-urls_file" title="Permanent link">&para;</a></h3>
+<p>Audit multiple pages (one URL per line) for SEO, schema, and performance issues in one pass — fetches each page once and runs <code>audit</code> + <code>schema validate</code> + <code>page-speed</code> against the same HTML. Exits non-zero if any page failed to fetch or has schema errors. <code>--timeout FLOAT</code> (default <code>10.0</code>).</p>
+<h3 id="check-links-input_file"><code>check-links INPUT_FILE</code><a class="headerlink" href="#check-links-input_file" title="Permanent link">&para;</a></h3>
+<p>Check links for broken URLs and redirects. A <code>.html</code> file has its links extracted and checked; any other file is a plain text list of URLs, one per line. Exits non-zero if any broken link is found. <code>--base-url TEXT</code> (resolve relative links in HTML input), <code>--timeout FLOAT</code> (default <code>10.0</code>).</p>
+<h2 id="sitemaps-robotstxt-and-llmstxt">Sitemaps, robots.txt, and llms.txt<a class="headerlink" href="#sitemaps-robotstxt-and-llmstxt" title="Permanent link">&para;</a></h2>
+<h3 id="sitemap-urls_file-output_file"><code>sitemap URLS_FILE OUTPUT_FILE</code><a class="headerlink" href="#sitemap-urls_file-output_file" title="Permanent link">&para;</a></h3>
+<p>Generate an XML sitemap from a file of absolute URLs (one per line).</p>
+<h3 id="robots-output_file"><code>robots OUTPUT_FILE</code><a class="headerlink" href="#robots-output_file" title="Permanent link">&para;</a></h3>
+<p>Generate a robots.txt file. <code>--disallow TEXT</code> (repeatable), <code>--sitemap-url TEXT</code> (repeatable — defaults to <code>https://&lt;domain&gt;/sitemap.xml</code> if <code>domain</code> is set in config and no <code>--sitemap-url</code> is given).</p>
+<h3 id="llms-generate-spec_file"><code>llms generate SPEC_FILE</code><a class="headerlink" href="#llms-generate-spec_file" title="Permanent link">&para;</a></h3>
+<p>Generate an <code>llms.txt</code> file from a JSON spec (<code>name</code>, <code>summary</code>, <code>sections</code>), following the llmstxt.org convention. <code>--output FILE</code> writes to a file instead of stdout.</p>
+<h3 id="llms-audit-crawlers-robots_file"><code>llms audit-crawlers ROBOTS_FILE</code><a class="headerlink" href="#llms-audit-crawlers-robots_file" title="Permanent link">&para;</a></h3>
+<p>Audit a robots.txt file for AI crawler (GPTBot, ClaudeBot, PerplexityBot, etc.) accessibility, flagging crawlers unintentionally blocked by a blanket rule.</p>
+<h2 id="keywords-entities-and-internal-linking">Keywords, entities, and internal linking<a class="headerlink" href="#keywords-entities-and-internal-linking" title="Permanent link">&para;</a></h2>
+<h3 id="cluster-keywords_file"><code>cluster KEYWORDS_FILE</code><a class="headerlink" href="#cluster-keywords_file" title="Permanent link">&para;</a></h3>
+<p>Cluster keywords (one per line) by lexical token-overlap similarity. <code>--threshold FLOAT</code> (0.0-1.0, defaults to config's <code>default_similarity_threshold</code>).</p>
+<h3 id="keyword-map-audit-mappings_file"><code>keyword-map audit MAPPINGS_FILE</code><a class="headerlink" href="#keyword-map-audit-mappings_file" title="Permanent link">&para;</a></h3>
+<p>Audit an existing keyword-to-URL mapping (JSON list of <code>{keyword, url}</code>) for cannibalization — keywords assigned to more than one URL.</p>
+<h3 id="keyword-map-suggest-keywords_file-pages_file"><code>keyword-map suggest KEYWORDS_FILE PAGES_FILE</code><a class="headerlink" href="#keyword-map-suggest-keywords_file-pages_file" title="Permanent link">&para;</a></h3>
+<p>Suggest a target URL for each keyword from a set of existing pages (JSON <code>{url: title}</code>), reusing <code>cluster</code>'s similarity scoring. <code>--threshold FLOAT</code> override.</p>
+<h3 id="entities-content_file"><code>entities CONTENT_FILE</code><a class="headerlink" href="#entities-content_file" title="Permanent link">&para;</a></h3>
+<p>Extract entity mentions (Person/Organization/Date) with a frequency-based salience score. <code>--compare FILE</code> reports entities a competitor file mentions that <code>CONTENT_FILE</code> doesn't (content-gap analysis).</p>
+<h3 id="link-suggestions-pages_file"><code>link-suggestions PAGES_FILE</code><a class="headerlink" href="#link-suggestions-pages_file" title="Permanent link">&para;</a></h3>
+<p>Suggest internal links and flag orphan pages from a JSON page list (<code>url</code>, <code>title</code>, <code>body</code>, <code>keywords</code>, <code>links_to</code>). <code>--max-per-page INTEGER</code> (default <code>5</code>).</p>
+<h2 id="content-generation">Content generation<a class="headerlink" href="#content-generation" title="Permanent link">&para;</a></h2>
+<h3 id="meta"><code>meta</code><a class="headerlink" href="#meta" title="Permanent link">&para;</a></h3>
+<p>Generate an SEO title tag and/or meta description. <code>--title TEXT</code>, <code>--brand TEXT</code> (defaults to config's <code>brand</code>), <code>--description TEXT</code>.</p>
+<h3 id="content-brief-spec_file"><code>content-brief SPEC_FILE</code><a class="headerlink" href="#content-brief-spec_file" title="Permanent link">&para;</a></h3>
+<p>Generate a content brief (clustered H2 sections with word-count targets, title/meta guidance) from a JSON spec (<code>primary_keyword</code>, <code>related_keywords</code>, <code>target_word_count</code>, <code>questions</code>, <code>entities</code>). <code>--output FILE</code>.</p>
+<h3 id="faq-faq_file"><code>faq FAQ_FILE</code><a class="headerlink" href="#faq-faq_file" title="Permanent link">&para;</a></h3>
+<p>Generate a Markdown FAQ section and matching <code>FAQPage</code> schema from a JSON file of <code>{question, answer}</code> objects, with citability validation (question phrasing, answer length, dangling-pronoun openers). <code>--output FILE</code>.</p>
+<h3 id="blog-scaffold-spec_file"><code>blog-scaffold SPEC_FILE</code><a class="headerlink" href="#blog-scaffold-spec_file" title="Permanent link">&para;</a></h3>
+<p>Scaffold a new blog post — frontmatter, a section-by-section outline (as writer TODOs, not fabricated prose), an FAQ skeleton, and an <code>Article</code> schema — from a JSON spec combining blog metadata with a content-brief spec. <code>--output FILE</code>.</p>
+<h2 id="local-seo-page-generators">Local SEO page generators<a class="headerlink" href="#local-seo-page-generators" title="Permanent link">&para;</a></h2>
+<p>Both enforce quality gates (unique content per page, no boilerplate duplicated across sibling pages) before rendering; pass <code>--skip-quality-gates</code> to bypass (not recommended).</p>
+<h3 id="location-pages-specs_file-output_dir"><code>location-pages SPECS_FILE OUTPUT_DIR</code><a class="headerlink" href="#location-pages-specs_file-output_dir" title="Permanent link">&para;</a></h3>
+<p>Generate governed pages for storefront/multi-location businesses (full NAP, hours, <code>LocalBusiness</code> schema) from a JSON spec list.</p>
+<h3 id="service-pages-specs_file-output_dir"><code>service-pages SPECS_FILE OUTPUT_DIR</code><a class="headerlink" href="#service-pages-specs_file-output_dir" title="Permanent link">&para;</a></h3>
+<p>Generate governed pages for service-area businesses (no street address — schema uses <code>areaServed</code> instead, to avoid a false physical-presence claim) from a JSON spec list.</p>
+<h2 id="documentation-tooling">Documentation tooling<a class="headerlink" href="#documentation-tooling" title="Permanent link">&para;</a></h2>
+<h3 id="generate-toc-book_directory"><code>generate-toc BOOK_DIRECTORY</code><a class="headerlink" href="#generate-toc-book_directory" title="Permanent link">&para;</a></h3>
+<p>Generate a book's <code>| # | Chapter | Focus |</code> table of contents from its <code>chapter-*.md</code> files. <code>--output FILE</code>.</p>
+<h3 id="generate-readme-spec_file"><code>generate-readme SPEC_FILE</code><a class="headerlink" href="#generate-readme-spec_file" title="Permanent link">&para;</a></h3>
+<p>Generate a full book README.md (title, description, table of contents, related books, license line) from a JSON spec. <code>--output FILE</code>.</p>
+<h2 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permanent link">&para;</a></h2>
+<h3 id="init-directory"><code>init [DIRECTORY]</code><a class="headerlink" href="#init-directory" title="Permanent link">&para;</a></h3>
+<p>Scaffold a new project's <code>seo-playbook.yml</code> config file. <code>--brand TEXT</code>, <code>--domain TEXT</code>, <code>--output-dir TEXT</code>, <code>--similarity-threshold FLOAT</code>, <code>--force</code> (overwrite an existing config).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Content licensed under the terms in the repository <a href="https://github.com/jumma786/seo-aeo-playbook/blob/main/LICENSE">LICENSE</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

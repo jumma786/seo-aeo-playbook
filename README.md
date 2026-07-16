@@ -29,6 +29,23 @@ Most SEO resources give you prose you can't execute, or tools that don't explain
 
 Every chapter points at the command that automates it. Every command traces back to the chapter that justifies it.
 
+### The three layers, and the book for each
+
+One query now travels two very different paths. The books map onto them:
+
+```mermaid
+flowchart LR
+    Q(["Someone searches<br/>for what you do"])
+
+    Q --> SE["<b>Search engine</b><br/>crawl → render → index → rank<br/><i>returns ten blue links</i>"]
+    Q --> AE["<b>Answer engine</b><br/>retrieve → select passage → cite<br/><i>returns one synthesised answer</i>"]
+    AE --> RM["<b>Retrieval machinery</b><br/>entities → embeddings → vectors → RAG<br/><i>why it picked anything at all</i>"]
+
+    SE -.-> B1["<b>SEO Book</b> · 20 chapters<br/>Be findable and rankable"]
+    AE -.-> B2["<b>AEO Book</b> · 10 chapters<br/>Be the source it cites"]
+    RM -.-> B3["<b>GEO Book</b> · 8 chapters<br/>Understand why it works"]
+```
+
 ## Quick start
 
 ```bash
@@ -109,7 +126,23 @@ Search advice is unusually prone to confident nonsense, so the standards here ar
 
 ## The toolkit
 
-The 23 modules in `scripts/` are plain, dependency-light Python with docstrings and doctests, exposed two ways.
+The 23 modules in `scripts/` are plain, dependency-light Python with docstrings and doctests. Everything else is a thin wrapper around them — the CLI and the API are two doors into the same rooms, and the test suite covers all of it:
+
+```mermaid
+flowchart TB
+    BOOKS["<b>docs/books/</b><br/>38 chapters · 91 sourced references"]
+
+    subgraph TESTED[" covered by tests/ — 459 tests, CI on Python 3.10 and 3.12 "]
+        direction TB
+        CORE["<b>scripts/</b> — 23 modules<br/>schema · sitemap · robots · llms.txt<br/>on-page · site · speed · link audits<br/>keywords · entities · internal linking<br/>briefs · FAQ · blog · local pages"]
+        CORE --> CLI["<b>cli/</b> — 21 commands<br/><code>seo-playbook</code>"]
+        CORE --> API["<b>api/</b> — 25 endpoints<br/>FastAPI · local use only"]
+    end
+
+    BOOKS -->|"justifies"| CORE
+    CLI --> T(["your terminal"])
+    API --> H(["HTTP · Swagger UI at /docs"])
+```
 
 ### CLI
 
